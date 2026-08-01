@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Disaster Response Assistant</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ===================== NAVIGATION ===================== -->
+
+    <header>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-shield-heart"></i>
+
+            <span>AI Disaster Response Assistant</span>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li><a href="#home">Home</a></li>
+
+                <li><a href="#features">Features</a></li>
+
+                <li><a href="#workflow">Workflow</a></li>
+
+                <li><a href="#dashboard">Dashboard</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-left">
+
+            <h1>
+
+                AI Powered Emergency Response Assistant
+
+            </h1>
+
+            <p>
+
+                An intelligent disaster management platform that helps
+                emergency responders summarize reports,
+                generate evacuation notices,
+                translate emergency communication,
+                create disaster maps,
+                produce public awareness campaigns,
+                and generate crisis documentation.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <button>
+
+                    Launch Assistant
+
+                </button>
+
+                <button class="outline">
+
+                    Learn More
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-right">
+
+            <img src="images/disaster.png"
+                alt="AI Disaster">
+
+        </div>
+
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+
+    <section class="features" id="features">
+
+        <h2>
+
+            Key Features
+
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                <h3>
+
+                    Report Summarization
+
+                </h3>
+
+                <p>
+
+                    Upload lengthy emergency reports and receive concise,
+                    AI-generated summaries with recommended actions.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <h3>
+
+                    Evacuation Notices
+
+                </h3>
+
+                <p>
+
+                    Automatically generate clear evacuation instructions
+                    for affected communities.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-language"></i>
+
+                <h3>
+
+                    AI Translation
+
+                </h3>
+
+                <p>
+
+                    Translate emergency communications into
+                    English,
+                    Hausa,
+                    Igbo,
+                    Yoruba,
+                    French and more.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-map-location-dot"></i>
+
+                <h3>
+
+                    Situation Maps
+
+                </h3>
+
+                <p>
+
+                    Display disaster locations,
+                    shelters,
+                    hospitals,
+                    evacuation routes
+                    and affected communities.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <h3>
+
+                    Visual Briefings
+
+                </h3>
+
+                <p>
+
+                    Create dashboards,
+                    statistics,
+                    charts
+                    and presentation slides
+                    for emergency command centres.
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                <h3>
+
+                    Public Awareness
+
+                </h3>
+
+                <p>
+
+                    Generate SMS,
+                    posters,
+                    flyers,
+                    radio announcements
+                    and social media campaigns.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== CHATBOT ===================== -->
+
+    <section class="chat-section">
+
+        <h2>
+
+            AI Emergency Assistant
+
+        </h2>
+
+        <div class="chat-container">
+
+            <div class="chat-header">
+
+                <i class="fa-solid fa-robot"></i>
+
+                AI Disaster Assistant
+
+            </div>
+
+            <div id="chatBox" class="chat-box">
+
+                <div class="message ai">
+
+                    <div class="bubble">
+
+                        👋 Hello!
+
+                        I am your AI Disaster Response Assistant.
+
+                        Ask me about:
+
+                        <br><br>
+
+                        ✔ Floods
+
+                        <br>
+
+                        ✔ Fire outbreaks
+
+                        <br>
+
+                        ✔ Earthquakes
+
+                        <br>
+
+                        ✔ Evacuation notices
+
+                        <br>
+
+                        ✔ Emergency translation
+
+                        <br>
+
+                        ✔ Disaster reports
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="chat-input">
+
+                <textarea id="message"
+                    placeholder="Ask anything about disaster response..."></textarea>
+
+                <button onclick="sendMessage()">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== WORKFLOW ===================== -->
+
+    <section id="workflow">
+
+        <h2>
+
+            System Workflow
+
+        </h2>
+
+        <div class="workflow">
+
+            <div class="step">
+
+                <h3>
+
+                    1
+
+                </h3>
+
+                <p>
+
+                    Emergency Alert
+
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <h3>
+
+                    2
+
+                </h3>
+
+                <p>
+
+                    Collect Reports
+
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <h3>
+
+                    3
+
+                </h3>
+
+                <p>
+
+                    AI Analysis
+
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <h3>
+
+                    4
+
+                </h3>
+
+                <p>
+
+                    Generate Maps
+
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <h3>
+
+                    5
+
+                </h3>
+
+                <p>
+
+                    Public Alerts
+
+                </p>
+
+            </div>
+
+            <div class="step">
+
+                <h3>
+
+                    6
+
+                </h3>
+
+                <p>
+
+                    Documentation
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== DASHBOARD ===================== -->
+
+    <section id="dashboard">
+
+        <h2>
+
+            Live Dashboard
+
+        </h2>
+
+        <div class="dashboard">
+
+            <div class="box">
+
+                <h3>
+
+                    32
+
+                </h3>
+
+                <p>
+
+                    Active Incidents
+
+                </p>
+
+            </div>
+
+            <div class="box">
+
+                <h3>
+
+                    18
+
+                </h3>
+
+                <p>
+
+                    Rescue Teams
+
+                </p>
+
+            </div>
+
+            <div class="box">
+
+                <h3>
+
+                    12
+
+                </h3>
+
+                <p>
+
+                    Emergency Shelters
+
+                </p>
+
+            </div>
+
+            <div class="box">
+
+                <h3>
+
+                    95%
+
+                </h3>
+
+                <p>
+
+                    AI Accuracy
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+
+    <section id="contact">
+
+        <h2>
+
+            Contact
+
+        </h2>
+
+        <form>
+
+            <input type="text"
+                placeholder="Full Name">
+
+            <input type="email"
+                placeholder="Email Address">
+
+            <textarea
+                placeholder="Your Message"></textarea>
+
+            <button>
+
+                Send Message
+
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+
+    <footer>
+
+        <h3>
+
+            AI Disaster Response Assistant
+
+        </h3>
+
+        <p>
+
+            AI-powered disaster management platform for emergency
+            preparedness,
+            response,
+            and recovery.
+
+        </p>
+
+        <p>
+
+            © 2026 All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
