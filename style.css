@@ -1,0 +1,2249 @@
+/* =====================================================
+   AI DISASTER RESPONSE ASSISTANT
+   STYLE.CSS
+   PART 1
+===================================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===============================
+   RESET
+================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f4f8fb;
+
+    color:#333;
+
+    line-height:1.7;
+
+}
+
+/* ===============================
+   VARIABLES
+================================ */
+
+:root{
+
+    --primary:#d62828;
+
+    --secondary:#003049;
+
+    --accent:#fcbf49;
+
+    --light:#ffffff;
+
+    --dark:#222;
+
+    --gray:#666;
+
+    --border:#e5e5e5;
+
+    --shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+/* ===============================
+   LINKS
+================================ */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+/* ===============================
+   HEADER
+================================ */
+
+header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    background:var(--secondary);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 8%;
+
+    z-index:1000;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.logo i{
+
+    color:var(--accent);
+
+    font-size:30px;
+
+}
+
+/* ===============================
+   NAVIGATION
+================================ */
+
+nav ul{
+
+    display:flex;
+
+    gap:30px;
+
+}
+
+nav a{
+
+    color:white;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:var(--accent);
+
+}
+
+/* ===============================
+   HERO
+================================ */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:140px 8% 80px;
+
+    gap:60px;
+
+    background:linear-gradient(135deg,#003049,#1b4965);
+
+    color:white;
+
+}
+
+.hero-left{
+
+    flex:1;
+
+}
+
+.hero-left h1{
+
+    font-size:55px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+}
+
+.hero-left p{
+
+    font-size:18px;
+
+    margin-bottom:35px;
+
+    color:#f5f5f5;
+
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-buttons button{
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.hero-buttons button:first-child{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.hero-buttons button:first-child:hover{
+
+    background:#b71c1c;
+
+    transform:translateY(-3px);
+
+}
+
+.outline{
+
+    background:transparent;
+
+    border:2px solid white !important;
+
+    color:white;
+
+}
+
+.outline:hover{
+
+    background:white;
+
+    color:var(--secondary);
+
+}
+
+/* ===============================
+   HERO IMAGE
+================================ */
+
+.hero-right{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.hero-right img{
+
+    width:100%;
+
+    max-width:500px;
+
+    animation:floatImage 5s ease-in-out infinite;
+
+}
+
+/* ===============================
+   FLOAT ANIMATION
+================================ */
+
+@keyframes floatImage{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-20px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ===============================
+   SECTION
+================================ */
+
+section{
+
+    padding:90px 8%;
+
+}
+
+section h2{
+
+    text-align:center;
+
+    font-size:40px;
+
+    color:var(--secondary);
+
+    margin-bottom:50px;
+
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media(max-width:992px){
+
+.hero{
+
+flex-direction:column;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-left h1{
+
+font-size:42px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+nav ul{
+
+gap:15px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+header{
+
+flex-direction:column;
+
+padding:20px;
+
+}
+
+nav{
+
+margin-top:15px;
+
+}
+
+nav ul{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.hero-left h1{
+
+font-size:34px;
+
+}
+
+.hero-left p{
+
+font-size:16px;
+
+}
+
+}
+/* =====================================================
+   AI DISASTER RESPONSE ASSISTANT
+   STYLE.CSS
+   PART 2
+
+   FEATURES + AI CHAT INTERFACE
+===================================================== */
+
+
+/* ===============================
+   FEATURES SECTION
+================================ */
+
+.features{
+
+    background:#ffffff;
+
+}
+
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+
+/* ===============================
+   FEATURE CARD
+================================ */
+
+.card{
+
+    background:white;
+
+    padding:35px 30px;
+
+    border-radius:15px;
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+
+    transition:.4s;
+
+    border:1px solid var(--border);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:100%;
+
+    height:5px;
+
+    top:0;
+
+    left:0;
+
+    background:var(--primary);
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+}
+
+
+.card i{
+
+    font-size:45px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+
+.card h3{
+
+    color:var(--secondary);
+
+    font-size:22px;
+
+    margin-bottom:15px;
+
+}
+
+
+.card p{
+
+    color:var(--gray);
+
+    font-size:15px;
+
+    line-height:1.8;
+
+}
+
+
+
+/* ===============================
+   CHAT SECTION
+================================ */
+
+.chat-section{
+
+    background:#eef4f8;
+
+}
+
+
+.chat-section h2{
+
+    margin-bottom:40px;
+
+}
+
+
+
+/* ===============================
+   CHAT CONTAINER
+================================ */
+
+.chat-container{
+
+    max-width:850px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+}
+
+
+
+/* ===============================
+   CHAT HEADER
+================================ */
+
+.chat-header{
+
+    background:var(--secondary);
+
+    color:white;
+
+    padding:20px;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.chat-header i{
+
+    color:var(--accent);
+
+    font-size:30px;
+
+}
+
+
+
+/* ===============================
+   CHAT MESSAGE AREA
+================================ */
+
+.chat-box{
+
+    height:450px;
+
+    padding:25px;
+
+    overflow-y:auto;
+
+    background:#f7f9fb;
+
+}
+
+
+
+/* ===============================
+   MESSAGE STYLE
+================================ */
+
+.message{
+
+    display:flex;
+
+    margin-bottom:20px;
+
+    animation:messageAppear .3s ease;
+
+}
+
+
+@keyframes messageAppear{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(10px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* AI MESSAGE */
+
+.message.ai{
+
+    justify-content:flex-start;
+
+}
+
+
+
+/* USER MESSAGE */
+
+.message.user{
+
+    justify-content:flex-end;
+
+}
+
+
+
+.bubble{
+
+    max-width:70%;
+
+    padding:15px 20px;
+
+    border-radius:18px;
+
+    line-height:1.7;
+
+    font-size:15px;
+
+}
+
+
+
+/* AI BUBBLE */
+
+.ai .bubble{
+
+    background:#e9eef3;
+
+    color:#333;
+
+    border-bottom-left-radius:5px;
+
+}
+
+
+
+/* USER BUBBLE */
+
+.user .bubble{
+
+    background:var(--primary);
+
+    color:white;
+
+    border-bottom-right-radius:5px;
+
+}
+
+
+
+/* ===============================
+   CHAT INPUT
+================================ */
+
+.chat-input{
+
+    display:flex;
+
+    gap:15px;
+
+    padding:20px;
+
+    border-top:1px solid var(--border);
+
+    background:white;
+
+}
+
+
+
+.chat-input textarea{
+
+    flex:1;
+
+    height:60px;
+
+    resize:none;
+
+    border:1px solid #ccc;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+
+
+.chat-input textarea:focus{
+
+    border-color:var(--primary);
+
+}
+
+
+
+/* SEND BUTTON */
+
+.chat-input button{
+
+    width:65px;
+
+    height:60px;
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    transition:.3s;
+
+}
+
+
+.chat-input button:hover{
+
+    background:#a4161a;
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* ===============================
+   SCROLL BAR
+================================ */
+
+
+.chat-box::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+.chat-box::-webkit-scrollbar-track{
+
+    background:#eee;
+
+}
+
+
+.chat-box::-webkit-scrollbar-thumb{
+
+    background:var(--secondary);
+
+    border-radius:10px;
+
+}
+
+
+
+/* ===============================
+   TYPING INDICATOR
+================================ */
+
+
+.typing{
+
+    display:flex;
+
+    gap:5px;
+
+    align-items:center;
+
+}
+
+
+.typing span{
+
+    width:8px;
+
+    height:8px;
+
+    background:var(--primary);
+
+    border-radius:50%;
+
+    animation:typingAnimation 1s infinite;
+
+}
+
+
+.typing span:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+
+.typing span:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+
+@keyframes typingAnimation{
+
+
+0%,100%{
+
+opacity:.3;
+
+transform:translateY(0);
+
+}
+
+
+50%{
+
+opacity:1;
+
+transform:translateY(-5px);
+
+}
+
+
+}
+
+
+
+/* ===============================
+   FEATURE CARD RESPONSIVE
+================================ */
+
+
+@media(max-width:768px){
+
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+
+.chat-box{
+
+height:380px;
+
+}
+
+
+.bubble{
+
+max-width:85%;
+
+}
+
+
+.chat-input{
+
+flex-direction:column;
+
+}
+
+
+.chat-input button{
+
+width:100%;
+
+}
+
+
+}
+/* =====================================================
+   AI DISASTER RESPONSE ASSISTANT
+   STYLE.CSS
+   PART 3
+
+   WORKFLOW + DASHBOARD + CONTACT FORM
+===================================================== */
+
+
+/* ===============================
+   WORKFLOW SECTION
+================================ */
+
+#workflow{
+
+    background:#f4f8fb;
+
+}
+
+
+
+.workflow{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:25px;
+
+    margin-top:40px;
+
+}
+
+
+
+/* ===============================
+   WORKFLOW STEP
+================================ */
+
+
+.step{
+
+    background:white;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    box-shadow:var(--shadow);
+
+    position:relative;
+
+    transition:.3s;
+
+}
+
+
+.step:hover{
+
+    transform:translateY(-8px);
+
+    background:var(--secondary);
+
+    color:white;
+
+}
+
+
+
+.step h3{
+
+    width:60px;
+
+    height:60px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:50%;
+
+    font-size:25px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.step p{
+
+    font-weight:600;
+
+    font-size:16px;
+
+}
+
+
+
+/* Connecting Line Effect */
+
+.step:not(:last-child)::after{
+
+    content:"→";
+
+    position:absolute;
+
+    right:-25px;
+
+    top:50%;
+
+    font-size:30px;
+
+    color:var(--primary);
+
+}
+
+
+
+@media(max-width:900px){
+
+.step:not(:last-child)::after{
+
+display:none;
+
+}
+
+}
+
+
+
+/* ===============================
+   DASHBOARD SECTION
+================================ */
+
+
+#dashboard{
+
+    background:white;
+
+}
+
+
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:30px;
+
+}
+
+
+
+/* ===============================
+   DASHBOARD BOX
+================================ */
+
+
+.box{
+
+    background:linear-gradient(
+
+    135deg,
+
+    var(--secondary),
+
+    #1b4965
+
+    );
+
+    color:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+
+
+.box:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+.box h3{
+
+    font-size:45px;
+
+    color:var(--accent);
+
+    margin-bottom:10px;
+
+}
+
+
+
+.box p{
+
+    font-size:17px;
+
+}
+
+
+
+/* ===============================
+   EMERGENCY STATUS PANEL
+================================ */
+
+
+.status-panel{
+
+    margin-top:50px;
+
+    background:#f5f7fa;
+
+    padding:30px;
+
+    border-radius:15px;
+
+}
+
+
+
+.status-panel h3{
+
+    color:var(--secondary);
+
+    margin-bottom:20px;
+
+}
+
+
+
+.status-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px;
+
+    background:white;
+
+    margin-bottom:15px;
+
+    border-radius:10px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+
+
+.status-active{
+
+    color:green;
+
+    font-weight:bold;
+
+}
+
+
+
+.status-warning{
+
+    color:#d97706;
+
+    font-weight:bold;
+
+}
+
+
+
+.status-danger{
+
+    color:red;
+
+    font-weight:bold;
+
+}
+
+
+
+/* ===============================
+   CONTACT SECTION
+================================ */
+
+
+#contact{
+
+    background:#eef4f8;
+
+}
+
+
+
+#contact form{
+
+    max-width:700px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+#contact input,
+
+#contact textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:20px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:15px;
+
+    font-family:inherit;
+
+}
+
+
+
+#contact textarea{
+
+    height:150px;
+
+    resize:none;
+
+}
+
+
+
+#contact input:focus,
+
+#contact textarea:focus{
+
+    border-color:var(--primary);
+
+}
+
+
+
+/* ===============================
+   FORM BUTTON
+================================ */
+
+
+#contact button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+#contact button:hover{
+
+    background:#a4161a;
+
+}
+
+
+
+/* ===============================
+   MAP PLACEHOLDER
+================================ */
+
+
+.map-container{
+
+    width:100%;
+
+    height:400px;
+
+    background:
+
+    linear-gradient(
+
+    45deg,
+
+    #d9e8f5,
+
+    #ffffff
+
+    );
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:25px;
+
+    color:var(--secondary);
+
+    margin-top:40px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+/* ===============================
+   ALERT BOXES
+================================ */
+
+
+.alert{
+
+    padding:20px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+
+.alert-danger{
+
+    background:#fee2e2;
+
+    color:#991b1b;
+
+    border-left:5px solid red;
+
+}
+
+
+
+.alert-warning{
+
+    background:#fef3c7;
+
+    color:#92400e;
+
+    border-left:5px solid orange;
+
+}
+
+
+
+.alert-success{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+    border-left:5px solid green;
+
+}
+
+
+
+/* ===============================
+   TABLE DESIGN
+================================ */
+
+
+.emergency-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:30px;
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+
+
+.emergency-table th{
+
+    background:var(--secondary);
+
+    color:white;
+
+    padding:15px;
+
+}
+
+
+
+.emergency-table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+
+
+.emergency-table tr:hover{
+
+    background:#f5f7fa;
+
+}
+
+
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+
+@media(max-width:768px){
+
+
+.workflow{
+
+grid-template-columns:1fr;
+
+}
+
+
+.dashboard{
+
+grid-template-columns:1fr;
+
+}
+
+
+#contact form{
+
+padding:25px;
+
+}
+
+
+.box h3{
+
+font-size:35px;
+
+}
+
+
+}
+/* =====================================================
+   AI DISASTER RESPONSE ASSISTANT
+   STYLE.CSS
+   PART 4 (FINAL)
+
+   FOOTER + ANIMATIONS + FINAL POLISH
+===================================================== */
+
+
+/* ===============================
+   FOOTER
+================================ */
+
+footer{
+
+    background:var(--secondary);
+
+    color:white;
+
+    padding:60px 8%;
+
+    text-align:center;
+
+}
+
+
+footer h3{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+
+    color:var(--accent);
+
+}
+
+
+footer p{
+
+    max-width:700px;
+
+    margin:10px auto;
+
+    color:#ddd;
+
+}
+
+
+.footer-icons{
+
+    margin-top:25px;
+
+}
+
+
+.footer-icons a{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:45px;
+
+    height:45px;
+
+    margin:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:var(--secondary);
+
+    transition:.3s;
+
+}
+
+
+.footer-icons a:hover{
+
+    background:var(--accent);
+
+    transform:translateY(-5px);
+
+}
+
+
+
+/* ===============================
+   SCROLL TO TOP BUTTON
+================================ */
+
+.scroll-top{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:999;
+
+}
+
+
+.scroll-top.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+
+/* ===============================
+   LOADING ANIMATION
+================================ */
+
+
+.loader{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    border:5px solid #ddd;
+
+    border-top-color:var(--primary);
+
+    animation:rotate 1s linear infinite;
+
+}
+
+
+
+@keyframes rotate{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+
+
+/* ===============================
+   AI STATUS INDICATOR
+================================ */
+
+
+.ai-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:14px;
+
+    color:#666;
+
+}
+
+
+
+.ai-status span{
+
+    width:12px;
+
+    height:12px;
+
+    background:#22c55e;
+
+    border-radius:50%;
+
+    animation:pulse 1.5s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+
+0%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+
+50%{
+
+transform:scale(1.5);
+
+opacity:.5;
+
+}
+
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+
+}
+
+
+
+/* ===============================
+   AI RESPONSE CARD
+================================ */
+
+
+.ai-response-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-top:25px;
+
+    box-shadow:var(--shadow);
+
+    border-left:5px solid var(--primary);
+
+    animation:slideUp .5s ease;
+
+}
+
+
+
+.ai-response-card h3{
+
+    color:var(--secondary);
+
+    margin-bottom:15px;
+
+}
+
+
+
+.ai-response-card ul{
+
+    list-style:disc;
+
+    padding-left:20px;
+
+}
+
+
+
+/* ===============================
+   ANIMATIONS
+================================ */
+
+
+@keyframes slideUp{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+.fade-in{
+
+    animation:fadeIn 1s ease;
+
+}
+
+
+
+@keyframes fadeIn{
+
+
+from{
+
+opacity:0;
+
+}
+
+
+to{
+
+opacity:1;
+
+}
+
+
+}
+
+
+
+/* ===============================
+   DARK MODE
+================================ */
+
+
+.dark-mode{
+
+    background:#101820;
+
+    color:white;
+
+}
+
+
+
+.dark-mode header{
+
+    background:#000;
+
+}
+
+
+
+.dark-mode .card,
+
+.dark-mode .chat-container,
+
+.dark-mode #contact form,
+
+.dark-mode .box,
+
+.dark-mode .step{
+
+    background:#1f2937;
+
+    color:white;
+
+}
+
+
+
+.dark-mode .chat-box{
+
+    background:#111827;
+
+}
+
+
+
+.dark-mode .ai .bubble{
+
+    background:#374151;
+
+    color:white;
+
+}
+
+
+
+.dark-mode input,
+
+.dark-mode textarea{
+
+    background:#111827;
+
+    color:white;
+
+    border-color:#444;
+
+}
+
+
+
+/* ===============================
+   MOBILE NAVIGATION
+================================ */
+
+
+.menu-toggle{
+
+    display:none;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
+
+
+
+@media(max-width:768px){
+
+
+.menu-toggle{
+
+display:block;
+
+}
+
+
+nav{
+
+display:none;
+
+}
+
+
+nav.active{
+
+display:block;
+
+}
+
+
+nav ul{
+
+flex-direction:column;
+
+background:var(--secondary);
+
+padding:20px;
+
+border-radius:10px;
+
+}
+
+
+.hero{
+
+padding-left:5%;
+
+padding-right:5%;
+
+}
+
+
+section{
+
+padding:70px 5%;
+
+}
+
+
+footer{
+
+padding:50px 5%;
+
+}
+
+
+}
+
+
+
+/* ===============================
+   EXTRA BUTTON EFFECTS
+================================ */
+
+
+button{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+
+button::after{
+
+content:"";
+
+position:absolute;
+
+width:0;
+
+height:0;
+
+background:rgba(255,255,255,.3);
+
+border-radius:50%;
+
+transform:translate(-50%,-50%);
+
+transition:.5s;
+
+}
+
+
+
+button:active::after{
+
+width:300px;
+
+height:300px;
+
+}
+
+
+
+/* ===============================
+   SECURITY BADGE
+================================ */
+
+
+.security-badge{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:10px 20px;
+
+background:#dcfce7;
+
+color:#166534;
+
+border-radius:20px;
+
+font-weight:600;
+
+}
+
+
+
+/* ===============================
+   PRINT REPORT STYLE
+================================ */
+
+
+.report{
+
+background:white;
+
+padding:40px;
+
+border-radius:15px;
+
+box-shadow:var(--shadow);
+
+}
+
+
+
+.report h2{
+
+text-align:left;
+
+margin-bottom:20px;
+
+}
+
+
+
+.report-section{
+
+margin-bottom:25px;
+
+}
+
+
+
+/* ===============================
+   FINAL RESPONSIVE FIXES
+================================ */
+
+
+@media(max-width:500px){
+
+
+.logo span{
+
+font-size:16px;
+
+}
+
+
+.hero-left h1{
+
+font-size:30px;
+
+}
+
+
+section h2{
+
+font-size:30px;
+
+}
+
+
+.chat-header{
+
+font-size:18px;
+
+}
+
+
+}
