@@ -2270,3 +2270,19 @@ font-size:18px;
     transform:scale(1.03);
 
 }
+.hero{
+
+    background:
+    linear-gradient(rgba(0,48,73,.75),
+                    rgba(0,48,73,.75)),
+    url("images/disaster.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    min-height:100vh;
+
+}
