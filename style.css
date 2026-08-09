@@ -1,2428 +1,982 @@
-/* =====================================================
-   AI DISASTER RESPONSE ASSISTANT
-   STYLE.CSS
-   PART 1
-===================================================== */
+```css
+/* =========================
+   GLOBAL STYLES
+========================= */
 
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
-/* ===============================
-   RESET
-================================ */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
-/* ==========================================
-   HERO IMAGE SLIDESHOW
-========================================== */
 
-.hero-slideshow {
-    position: relative;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+    line-height: 1.6;
+}
+
+section {
+    padding: 90px 7%;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 7%;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-bottom: 1px solid #e4e8ef;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #0b5cab;
+}
+
+.logo i {
+    font-size: 25px;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #344054;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #0b76d1;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 680px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    gap: 60px;
+
+    background:
+        radial-gradient(circle at top right,
+        rgba(0, 120, 255, 0.12),
+        transparent 35%),
+        #f5f9ff;
+}
+
+.hero-left {
+    max-width: 650px;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    background: #e5f2ff;
+
+    color: #0865b5;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 5vw, 70px);
+
+    margin-bottom: 25px;
+
+    color: #14213d;
+}
+
+.hero h1 span {
+    display: block;
+    color: #0877d1;
+}
+
+.hero-left > p {
+    font-size: 18px;
+    color: #596579;
+
+    max-width: 620px;
+
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons button {
+    border: none;
+
+    padding: 15px 25px;
+
+    border-radius: 8px;
+
+    background: #0877d1;
+    color: white;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.hero-buttons button:hover {
+    transform: translateY(-3px);
+    background: #075da5;
+}
+
+.hero-buttons .outline {
+    background: transparent;
+    color: #0877d1;
+    border: 2px solid #0877d1;
+}
+
+.hero-buttons .outline:hover {
+    background: #0877d1;
+    color: white;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 45px;
+
+    margin-top: 45px;
+}
+
+.hero-stats div {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-stats strong {
+    font-size: 25px;
+    color: #0877d1;
+}
+
+.hero-stats small {
+    color: #697586;
+}
+
+
+/* =========================
+   SLIDESHOW
+========================= */
+
+.hero-right {
     width: 100%;
-    max-width: 550px;
-    height: 420px;
+}
+
+.slideshow {
+    position: relative;
+
+    width: 100%;
+    height: 500px;
+
     overflow: hidden;
+
     border-radius: 25px;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+
+    background: #111;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.18);
 }
 
-.hero-slide {
+.slide {
     position: absolute;
+
     inset: 0;
+
     opacity: 0;
+
     visibility: hidden;
-    transition: opacity 0.8s ease-in-out;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
 }
 
-.hero-slide.active {
+.slide.active {
     opacity: 1;
     visibility: visible;
 }
 
-.hero-slide img {
+.slide img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
+    display: block;
+}
+
+.slide::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.75),
+            transparent 60%
+        );
 }
 
 .slide-caption {
     position: absolute;
+
     bottom: 50px;
-    left: 20px;
-    right: 20px;
-    padding: 15px 20px;
-    background: rgba(0, 48, 73, 0.85);
-    color: white;
-    border-radius: 10px;
+    left: 35px;
+    right: 35px;
+
+    z-index: 5;
+
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 600;
+
+    gap: 15px;
+
+    color: white;
 }
 
-.slide-caption i {
-    color: #fcbf49;
+.slide-caption > i {
+    width: 50px;
+    height: 50px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #0877d1;
+
     font-size: 20px;
 }
 
-/* Previous and next buttons */
+.slide-caption h3 {
+    font-size: 22px;
+}
+
+.slide-caption p {
+    color: #e5e7eb;
+    font-size: 14px;
+}
+
+
+/* Slideshow arrows */
 
 .slide-btn {
     position: absolute;
+
     top: 50%;
+
     transform: translateY(-50%);
+
+    z-index: 10;
+
     width: 45px;
     height: 45px;
+
     border: none;
+
     border-radius: 50%;
+
     background: rgba(255, 255, 255, 0.85);
-    color: #003049;
-    cursor: pointer;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    color: #0877d1;
+
+    font-size: 17px;
+
     transition: 0.3s;
 }
 
 .slide-btn:hover {
-    background: #fcbf49;
-    transform: translateY(-50%) scale(1.1);
+    background: white;
+    transform: translateY(-50%) scale(1.08);
 }
 
-.slide-btn.prev {
-    left: 15px;
+.prev {
+    left: 18px;
 }
 
-.slide-btn.next {
-    right: 15px;
+.next {
+    right: 18px;
 }
 
-/* Slide dots */
+
+/* Slideshow dots */
 
 .slide-dots {
     position: absolute;
-    bottom: 15px;
-    left: 0;
-    right: 0;
+
+    bottom: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
     display: flex;
-    justify-content: center;
     gap: 8px;
-    z-index: 5;
 }
 
 .dot {
-    width: 11px;
-    height: 11px;
+    width: 10px;
+    height: 10px;
+
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
+
+    background: rgba(255, 255, 255, 0.5);
+
     cursor: pointer;
+
     transition: 0.3s;
 }
 
 .dot.active {
-    background: #fcbf49;
-    transform: scale(1.3);
-}
-
-/* Mobile slideshow */
-
-@media (max-width: 768px) {
-
-    .hero-slideshow {
-        height: 330px;
-        max-width: 100%;
-    }
-
-}
-
-@media (max-width: 500px) {
-
-    .hero-slideshow {
-        height: 280px;
-    }
-
-    .slide-caption {
-        font-size: 13px;
-        bottom: 45px;
-    }
-
-    .slide-btn {
-        width: 38px;
-        height: 38px;
-    }
-
-}
-body{
-
-    font-family:'Poppins',sans-serif;
-
-    background:#f4f8fb;
-
-    color:#333;
-
-    line-height:1.7;
-
-}
-
-/* ===============================
-   VARIABLES
-================================ */
-
-:root{
-
-    --primary:#d62828;
-
-    --secondary:#003049;
-
-    --accent:#fcbf49;
-
-    --light:#ffffff;
-
-    --dark:#222;
-
-    --gray:#666;
-
-    --border:#e5e5e5;
-
-    --shadow:0 10px 25px rgba(0,0,0,.12);
-
-}
-
-/* ===============================
-   LINKS
-================================ */
-
-a{
-
-    text-decoration:none;
-
-    color:inherit;
-
-}
-
-ul{
-
-    list-style:none;
-
-}
-
-img{
-
-    width:100%;
-
-    display:block;
-
-}
-
-/* ===============================
-   HEADER
-================================ */
-
-header{
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    background:var(--secondary);
-
-    color:white;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:18px 8%;
-
-    z-index:1000;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
-
-}
-
-.logo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    font-size:24px;
-
-    font-weight:700;
-
-}
-
-.logo i{
-
-    color:var(--accent);
-
-    font-size:30px;
-
-}
-
-/* ===============================
-   NAVIGATION
-================================ */
-
-nav ul{
-
-    display:flex;
-
-    gap:30px;
-
-}
-
-nav a{
-
-    color:white;
-
-    font-weight:500;
-
-    transition:.3s;
-
-}
-
-nav a:hover{
-
-    color:var(--accent);
-
-}
-
-/* ===============================
-   HERO
-================================ */
-
-.hero{
-
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:140px 8% 80px;
-
-    gap:60px;
-
-    background:linear-gradient(135deg,#003049,#1b4965);
-
-    color:white;
-
-}
-
-.hero-left{
-
-    flex:1;
-
-}
-
-.hero-left h1{
-
-    font-size:55px;
-
-    line-height:1.2;
-
-    margin-bottom:25px;
-
-}
-
-.hero-left p{
-
-    font-size:18px;
-
-    margin-bottom:35px;
-
-    color:#f5f5f5;
-
-}
-
-/* ===============================
-   BUTTONS
-================================ */
-
-.hero-buttons{
-
-    display:flex;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-}
-
-.hero-buttons button{
-
-    padding:15px 35px;
-
-    border:none;
-
-    border-radius:8px;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    font-weight:600;
-
-}
-
-.hero-buttons button:first-child{
-
-    background:var(--primary);
-
-    color:white;
-
-}
-
-.hero-buttons button:first-child:hover{
-
-    background:#b71c1c;
-
-    transform:translateY(-3px);
-
-}
-
-.outline{
-
-    background:transparent;
-
-    border:2px solid white !important;
-
-    color:white;
-
-}
-
-.outline:hover{
-
-    background:white;
-
-    color:var(--secondary);
-
-}
-
-/* ===============================
-   HERO IMAGE
-================================ */
-
-.hero-right{
-
-    flex:1;
-
-    display:flex;
-
-    justify-content:center;
-
-}
-
-.hero-right img{
-
-    width:100%;
-
-    max-width:500px;
-
-    animation:floatImage 5s ease-in-out infinite;
-
-}
-
-/* ===============================
-   FLOAT ANIMATION
-================================ */
-
-@keyframes floatImage{
-
-0%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-20px);
-
-}
-
-100%{
-
-transform:translateY(0);
-
-}
-
-}
-
-/* ===============================
-   SECTION
-================================ */
-
-section{
-
-    padding:90px 8%;
-
-}
-
-section h2{
-
-    text-align:center;
-
-    font-size:40px;
-
-    color:var(--secondary);
-
-    margin-bottom:50px;
-
-}
-
-/* ===============================
-   RESPONSIVE
-================================ */
-
-@media(max-width:992px){
-
-.hero{
-
-flex-direction:column;
-
-text-align:center;
-
-padding-top:150px;
-
-}
-
-.hero-left h1{
-
-font-size:42px;
-
-}
-
-.hero-buttons{
-
-justify-content:center;
-
-}
-
-nav ul{
-
-gap:15px;
-
-}
-
-}
-
-@media(max-width:768px){
-
-header{
-
-flex-direction:column;
-
-padding:20px;
-
-}
-
-nav{
-
-margin-top:15px;
-
-}
-
-nav ul{
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-}
-
-.hero-left h1{
-
-font-size:34px;
-
-}
-
-.hero-left p{
-
-font-size:16px;
-
-}
-
-}
-/* =====================================================
-   AI DISASTER RESPONSE ASSISTANT
-   STYLE.CSS
-   PART 2
-
-   FEATURES + AI CHAT INTERFACE
-===================================================== */
-
-
-/* ===============================
-   FEATURES SECTION
-================================ */
-
-.features{
-
-    background:#ffffff;
-
-}
-
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-    gap:30px;
-
-}
-
-
-/* ===============================
-   FEATURE CARD
-================================ */
-
-.card{
-
-    background:white;
-
-    padding:35px 30px;
-
-    border-radius:15px;
-
-    box-shadow:var(--shadow);
-
-    text-align:center;
-
-    transition:.4s;
-
-    border:1px solid var(--border);
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-.card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:100%;
-
-    height:5px;
-
-    top:0;
-
-    left:0;
-
-    background:var(--primary);
-
-}
-
-
-.card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 15px 35px rgba(0,0,0,.18);
-
-}
-
-
-.card i{
-
-    font-size:45px;
-
-    color:var(--primary);
-
-    margin-bottom:20px;
-
-}
-
-
-.card h3{
-
-    color:var(--secondary);
-
-    font-size:22px;
-
-    margin-bottom:15px;
-
-}
-
-
-.card p{
-
-    color:var(--gray);
-
-    font-size:15px;
-
-    line-height:1.8;
-
-}
-
-
-
-/* ===============================
-   CHAT SECTION
-================================ */
-
-.chat-section{
-
-    background:#eef4f8;
-
-}
-
-
-.chat-section h2{
-
-    margin-bottom:40px;
-
-}
-
-
-
-/* ===============================
-   CHAT CONTAINER
-================================ */
-
-.chat-container{
-
-    max-width:850px;
-
-    margin:auto;
-
-    background:white;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
-
-}
-
-
-
-/* ===============================
-   CHAT HEADER
-================================ */
-
-.chat-header{
-
-    background:var(--secondary);
-
-    color:white;
-
-    padding:20px;
-
-    font-size:22px;
-
-    font-weight:600;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-
-.chat-header i{
-
-    color:var(--accent);
-
-    font-size:30px;
-
-}
-
-
-
-/* ===============================
-   CHAT MESSAGE AREA
-================================ */
-
-.chat-box{
-
-    height:450px;
-
-    padding:25px;
-
-    overflow-y:auto;
-
-    background:#f7f9fb;
-
-}
-
-
-
-/* ===============================
-   MESSAGE STYLE
-================================ */
-
-.message{
-
-    display:flex;
-
-    margin-bottom:20px;
-
-    animation:messageAppear .3s ease;
-
-}
-
-
-@keyframes messageAppear{
-
-
-from{
-
-opacity:0;
-
-transform:translateY(10px);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-
-}
-
-
-
-/* AI MESSAGE */
-
-.message.ai{
-
-    justify-content:flex-start;
-
-}
-
-
-
-/* USER MESSAGE */
-
-.message.user{
-
-    justify-content:flex-end;
-
-}
-
-
-
-.bubble{
-
-    max-width:70%;
-
-    padding:15px 20px;
-
-    border-radius:18px;
-
-    line-height:1.7;
-
-    font-size:15px;
-
-}
-
-
-
-/* AI BUBBLE */
-
-.ai .bubble{
-
-    background:#e9eef3;
-
-    color:#333;
-
-    border-bottom-left-radius:5px;
-
-}
-
-
-
-/* USER BUBBLE */
-
-.user .bubble{
-
-    background:var(--primary);
-
-    color:white;
-
-    border-bottom-right-radius:5px;
-
-}
-
-
-
-/* ===============================
-   CHAT INPUT
-================================ */
-
-.chat-input{
-
-    display:flex;
-
-    gap:15px;
-
-    padding:20px;
-
-    border-top:1px solid var(--border);
-
-    background:white;
-
-}
-
-
-
-.chat-input textarea{
-
-    flex:1;
-
-    height:60px;
-
-    resize:none;
-
-    border:1px solid #ccc;
-
-    border-radius:12px;
-
-    padding:15px;
-
-    font-size:15px;
-
-    outline:none;
-
-    transition:.3s;
-
-}
-
-
-
-.chat-input textarea:focus{
-
-    border-color:var(--primary);
-
-}
-
-
-
-/* SEND BUTTON */
-
-.chat-input button{
-
-    width:65px;
-
-    height:60px;
-
-    border:none;
-
-    background:var(--primary);
-
-    color:white;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
-    font-size:22px;
-
-    transition:.3s;
-
-}
-
-
-.chat-input button:hover{
-
-    background:#a4161a;
-
-    transform:scale(1.05);
-
-}
-
-
-
-/* ===============================
-   SCROLL BAR
-================================ */
-
-
-.chat-box::-webkit-scrollbar{
-
-    width:8px;
-
-}
-
-
-.chat-box::-webkit-scrollbar-track{
-
-    background:#eee;
-
-}
-
-
-.chat-box::-webkit-scrollbar-thumb{
-
-    background:var(--secondary);
+    width: 28px;
 
-    border-radius:10px;
+    border-radius: 10px;
 
+    background: white;
 }
 
 
+/* =========================
+   SECTION HEADINGS
+========================= */
 
-/* ===============================
-   TYPING INDICATOR
-================================ */
+.section-heading {
+    text-align: center;
 
+    max-width: 700px;
 
-.typing{
-
-    display:flex;
-
-    gap:5px;
-
-    align-items:center;
-
-}
-
-
-.typing span{
-
-    width:8px;
-
-    height:8px;
-
-    background:var(--primary);
-
-    border-radius:50%;
-
-    animation:typingAnimation 1s infinite;
-
-}
-
-
-.typing span:nth-child(2){
-
-    animation-delay:.2s;
-
-}
-
-
-.typing span:nth-child(3){
-
-    animation-delay:.4s;
-
+    margin: 0 auto 55px;
 }
-
 
-@keyframes typingAnimation{
+.section-heading span {
+    color: #0877d1;
 
+    font-size: 13px;
 
-0%,100%{
+    font-weight: 800;
 
-opacity:.3;
-
-transform:translateY(0);
-
+    letter-spacing: 2px;
 }
-
-
-50%{
 
-opacity:1;
+.section-heading h2 {
+    margin: 10px 0 15px;
 
-transform:translateY(-5px);
+    font-size: 40px;
 
+    color: #14213d;
 }
 
-
+.section-heading p {
+    color: #667085;
 }
-
-
-
-/* ===============================
-   FEATURE CARD RESPONSIVE
-================================ */
 
 
-@media(max-width:768px){
+/* =========================
+   FEATURES
+========================= */
 
-
-.cards{
-
-grid-template-columns:1fr;
-
+.features {
+    background: white;
 }
-
 
-.chat-box{
+.cards {
+    display: grid;
 
-height:380px;
+    grid-template-columns:
+        repeat(3, 1fr);
 
+    gap: 25px;
 }
 
+.card {
+    padding: 35px;
 
-.bubble{
+    border-radius: 15px;
 
-max-width:85%;
+    background: white;
 
-}
-
+    border: 1px solid #e7ebf0;
 
-.chat-input{
+    box-shadow:
+        0 10px 30px rgba(16, 24, 40, 0.06);
 
-flex-direction:column;
-
+    transition: 0.3s;
 }
-
 
-.chat-input button{
+.card:hover {
+    transform: translateY(-8px);
 
-width:100%;
+    border-color: #b7dcfa;
 
+    box-shadow:
+        0 20px 40px rgba(8, 119, 209, 0.12);
 }
 
+.card-icon {
+    width: 55px;
+    height: 55px;
 
-}
-/* =====================================================
-   AI DISASTER RESPONSE ASSISTANT
-   STYLE.CSS
-   PART 3
-
-   WORKFLOW + DASHBOARD + CONTACT FORM
-===================================================== */
+    display: grid;
+    place-items: center;
 
+    margin-bottom: 22px;
 
-/* ===============================
-   WORKFLOW SECTION
-================================ */
+    border-radius: 12px;
 
-#workflow{
+    background: #e9f5ff;
 
-    background:#f4f8fb;
+    color: #0877d1;
 
+    font-size: 22px;
 }
-
-
-
-.workflow{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
-    gap:25px;
 
-    margin-top:40px;
+.card h3 {
+    margin-bottom: 12px;
 
+    font-size: 20px;
 }
 
-
-
-/* ===============================
-   WORKFLOW STEP
-================================ */
-
-
-.step{
-
-    background:white;
-
-    padding:35px 20px;
-
-    text-align:center;
-
-    border-radius:15px;
-
-    box-shadow:var(--shadow);
-
-    position:relative;
-
-    transition:.3s;
-
+.card p {
+    color: #667085;
 }
 
 
-.step:hover{
+/* =========================
+   CHATBOT
+========================= */
 
-    transform:translateY(-8px);
-
-    background:var(--secondary);
-
-    color:white;
-
+.chat-section {
+    background: #eef6ff;
 }
-
 
+.chat-container {
+    max-width: 850px;
 
-.step h3{
+    margin: auto;
 
-    width:60px;
+    overflow: hidden;
 
-    height:60px;
+    background: white;
 
-    margin:auto;
+    border-radius: 18px;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:var(--primary);
-
-    color:white;
-
-    border-radius:50%;
-
-    font-size:25px;
-
-    margin-bottom:20px;
-
+    box-shadow:
+        0 20px 60px rgba(16, 24, 40, 0.12);
 }
 
+.chat-header {
+    padding: 20px 25px;
 
+    background: #0877d1;
 
-.step p{
-
-    font-weight:600;
-
-    font-size:16px;
-
+    color: white;
 }
-
-
-
-/* Connecting Line Effect */
-
-.step:not(:last-child)::after{
-
-    content:"→";
 
-    position:absolute;
-
-    right:-25px;
-
-    top:50%;
-
-    font-size:30px;
-
-    color:var(--primary);
-
+.chat-title {
+    display: flex;
+    align-items: center;
+    gap: 13px;
 }
-
-
-
-@media(max-width:900px){
 
-.step:not(:last-child)::after{
+.bot-icon {
+    width: 45px;
+    height: 45px;
 
-display:none;
+    display: grid;
+    place-items: center;
 
-}
+    border-radius: 50%;
 
+    background: rgba(255, 255, 255, 0.18);
 }
-
-
-
-/* ===============================
-   DASHBOARD SECTION
-================================ */
 
-
-#dashboard{
-
-    background:white;
-
+.chat-title div:last-child {
+    display: flex;
+    flex-direction: column;
 }
-
 
-
-.dashboard{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:30px;
-
+.chat-title small {
+    color: #d9efff;
 }
-
-
-
-/* ===============================
-   DASHBOARD BOX
-================================ */
-
-
-.box{
-
-    background:linear-gradient(
-
-    135deg,
-
-    var(--secondary),
-
-    #1b4965
-
-    );
-
-    color:white;
 
-    padding:35px;
+.online {
+    display: inline-block;
 
-    border-radius:20px;
+    width: 7px;
+    height: 7px;
 
-    text-align:center;
+    border-radius: 50%;
 
-    box-shadow:var(--shadow);
+    background: #5cff91;
 
-    transition:.3s;
-
+    margin-right: 5px;
 }
-
 
+.chat-box {
+    height: 350px;
 
-.box:hover{
+    padding: 25px;
 
-    transform:scale(1.05);
+    overflow-y: auto;
 
+    background: #f8fafc;
 }
-
-
-
-.box h3{
-
-    font-size:45px;
-
-    color:var(--accent);
-
-    margin-bottom:10px;
 
+.message {
+    display: flex;
 }
 
-
-
-.box p{
-
-    font-size:17px;
-
+.message.ai {
+    justify-content: flex-start;
 }
-
-
-
-/* ===============================
-   EMERGENCY STATUS PANEL
-================================ */
-
 
-.status-panel{
+.bubble {
+    max-width: 75%;
 
-    margin-top:50px;
+    padding: 18px 20px;
 
-    background:#f5f7fa;
+    border-radius: 15px 15px 15px 3px;
 
-    padding:30px;
+    background: white;
 
-    border-radius:15px;
+    border: 1px solid #e5e7eb;
 
+    color: #475467;
 }
 
+.chat-input {
+    display: flex;
 
+    gap: 10px;
 
-.status-panel h3{
+    padding: 18px;
 
-    color:var(--secondary);
-
-    margin-bottom:20px;
-
+    border-top: 1px solid #e5e7eb;
 }
-
-
 
-.status-item{
+.chat-input textarea {
+    flex: 1;
 
-    display:flex;
+    min-height: 55px;
 
-    justify-content:space-between;
+    resize: none;
 
-    align-items:center;
+    padding: 15px;
 
-    padding:15px;
+    border: 1px solid #d0d5dd;
 
-    background:white;
+    border-radius: 10px;
 
-    margin-bottom:15px;
+    outline: none;
 
-    border-radius:10px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-
+    font-family: inherit;
 }
-
-
 
-.status-active{
-
-    color:green;
-
-    font-weight:bold;
-
+.chat-input textarea:focus {
+    border-color: #0877d1;
 }
 
+.chat-input button {
+    width: 55px;
 
+    border: none;
 
-.status-warning{
+    border-radius: 10px;
 
-    color:#d97706;
+    background: #0877d1;
 
-    font-weight:bold;
+    color: white;
 
+    font-size: 18px;
 }
-
 
 
-.status-danger{
+/* =========================
+   WORKFLOW
+========================= */
 
-    color:red;
-
-    font-weight:bold;
-
+#workflow {
+    background: white;
 }
-
-
 
-/* ===============================
-   CONTACT SECTION
-================================ */
+.workflow {
+    display: grid;
 
+    grid-template-columns:
+        repeat(3, 1fr);
 
-#contact{
-
-    background:#eef4f8;
-
+    gap: 25px;
 }
-
-
 
-#contact form{
+.step {
+    position: relative;
 
-    max-width:700px;
+    padding: 35px;
 
-    margin:auto;
+    border-radius: 15px;
 
-    background:white;
+    background: #f8fafc;
 
-    padding:40px;
-
-    border-radius:20px;
-
-    box-shadow:var(--shadow);
-
+    border: 1px solid #e5e7eb;
 }
-
-
-
-#contact input,
-
-#contact textarea{
-
-    width:100%;
-
-    padding:15px;
-
-    margin-bottom:20px;
-
-    border:1px solid #ddd;
-
-    border-radius:10px;
 
-    outline:none;
+.step-number {
+    color: #0877d1;
 
-    font-size:15px;
+    font-weight: 900;
 
-    font-family:inherit;
-
+    margin-bottom: 15px;
 }
-
-
-
-#contact textarea{
 
-    height:150px;
+.step > i {
+    font-size: 25px;
 
-    resize:none;
+    color: #0877d1;
 
+    margin-bottom: 15px;
 }
-
-
-
-#contact input:focus,
-
-#contact textarea:focus{
 
-    border-color:var(--primary);
-
+.step h3 {
+    margin-bottom: 10px;
 }
-
-
-
-/* ===============================
-   FORM BUTTON
-================================ */
-
-
-#contact button{
-
-    width:100%;
-
-    padding:15px;
 
-    border:none;
-
-    border-radius:10px;
-
-    background:var(--primary);
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-
+.step p {
+    color: #667085;
 }
 
 
+/* =========================
+   DASHBOARD
+========================= */
 
-#contact button:hover{
-
-    background:#a4161a;
-
+#dashboard {
+    background: #f5f9ff;
 }
-
-
-
-/* ===============================
-   MAP PLACEHOLDER
-================================ */
-
-
-.map-container{
-
-    width:100%;
 
-    height:400px;
+.dashboard {
+    display: grid;
 
-    background:
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    linear-gradient(
-
-    45deg,
-
-    #d9e8f5,
-
-    #ffffff
-
-    );
-
-    border-radius:20px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:25px;
-
-    color:var(--secondary);
-
-    margin-top:40px;
-
-    box-shadow:var(--shadow);
-
+    gap: 25px;
 }
-
-
-
-/* ===============================
-   ALERT BOXES
-================================ */
 
+.box {
+    padding: 35px 25px;
 
-.alert{
+    text-align: center;
 
-    padding:20px;
+    background: white;
 
-    border-radius:12px;
+    border-radius: 15px;
 
-    margin-bottom:20px;
+    border: 1px solid #e3eaf2;
 
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
+    box-shadow:
+        0 10px 30px rgba(16, 24, 40, 0.06);
 }
-
 
+.box i {
+    font-size: 25px;
 
-.alert-danger{
+    color: #0877d1;
 
-    background:#fee2e2;
-
-    color:#991b1b;
-
-    border-left:5px solid red;
-
+    margin-bottom: 15px;
 }
-
 
+.box h3 {
+    font-size: 38px;
 
-.alert-warning{
-
-    background:#fef3c7;
-
-    color:#92400e;
-
-    border-left:5px solid orange;
-
+    color: #14213d;
 }
-
-
-
-.alert-success{
-
-    background:#dcfce7;
 
-    color:#166534;
-
-    border-left:5px solid green;
-
+.box p {
+    color: #667085;
 }
-
-
-
-/* ===============================
-   TABLE DESIGN
-================================ */
-
-
-.emergency-table{
-
-    width:100%;
 
-    border-collapse:collapse;
 
-    margin-top:30px;
+/* =========================
+   CONTACT
+========================= */
 
-    background:white;
-
-    border-radius:15px;
-
-    overflow:hidden;
-
+#contact {
+    background: white;
 }
-
 
+form {
+    max-width: 700px;
 
-.emergency-table th{
+    margin: auto;
 
-    background:var(--secondary);
+    display: grid;
 
-    color:white;
-
-    padding:15px;
-
+    gap: 15px;
 }
-
-
 
-.emergency-table td{
+form input,
+form textarea {
+    width: 100%;
 
-    padding:15px;
+    padding: 16px;
 
-    border-bottom:1px solid #ddd;
+    border: 1px solid #d0d5dd;
 
-}
-
-
-
-.emergency-table tr:hover{
+    border-radius: 8px;
 
-    background:#f5f7fa;
+    font-family: inherit;
 
+    outline: none;
 }
-
-
-
-/* ===============================
-   MOBILE RESPONSIVE
-================================ */
-
 
-@media(max-width:768px){
+form textarea {
+    min-height: 150px;
 
-
-.workflow{
-
-grid-template-columns:1fr;
-
+    resize: vertical;
 }
-
 
-.dashboard{
-
-grid-template-columns:1fr;
-
+form input:focus,
+form textarea:focus {
+    border-color: #0877d1;
 }
 
+form button {
+    padding: 16px;
 
-#contact form{
+    border: none;
 
-padding:25px;
+    border-radius: 8px;
 
-}
+    background: #0877d1;
 
+    color: white;
 
-.box h3{
+    font-weight: 700;
 
-font-size:35px;
+    font-size: 16px;
 
+    transition: 0.3s;
 }
 
-
+form button:hover {
+    background: #075da5;
 }
-/* =====================================================
-   AI DISASTER RESPONSE ASSISTANT
-   STYLE.CSS
-   PART 4 (FINAL)
-
-   FOOTER + ANIMATIONS + FINAL POLISH
-===================================================== */
 
 
-/* ===============================
+/* =========================
    FOOTER
-================================ */
+========================= */
 
-footer{
+footer {
+    padding: 55px 7% 20px;
 
-    background:var(--secondary);
+    background: #101828;
 
-    color:white;
+    color: white;
+}
 
-    padding:60px 8%;
+.footer-content {
+    display: flex;
 
-    text-align:center;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding-bottom: 35px;
+}
+
+.footer-content h3 {
+    margin-bottom: 15px;
+}
+
+.footer-content h3 i {
+    color: #49a8ff;
+}
+
+.footer-content p {
+    max-width: 500px;
+
+    color: #98a2b3;
+}
+
+.footer-links {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #d0d5dd;
+
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    padding-top: 20px;
+
+    border-top: 1px solid #344054;
+
+    text-align: center;
+
+    color: #98a2b3;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-right {
+        max-width: 700px;
+
+        margin: auto;
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .workflow {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .dashboard {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
 
 }
 
 
-footer h3{
+@media (max-width: 700px) {
 
-    font-size:30px;
+    header {
+        flex-direction: column;
 
-    margin-bottom:15px;
+        gap: 15px;
+    }
 
-    color:var(--accent);
+    nav ul {
+        gap: 15px;
 
-}
+        flex-wrap: wrap;
 
+        justify-content: center;
+    }
 
-footer p{
+    section {
+        padding: 65px 5%;
+    }
 
-    max-width:700px;
+    .hero {
+        padding-top: 60px;
+    }
 
-    margin:10px auto;
+    .hero h1 {
+        font-size: 42px;
+    }
 
-    color:#ddd;
+    .hero-stats {
+        gap: 20px;
+    }
 
-}
+    .slideshow {
+        height: 350px;
+    }
 
+    .cards,
+    .workflow,
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
 
-.footer-icons{
-
-    margin-top:25px;
-
-}
-
-
-.footer-icons a{
-
-    display:inline-flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    width:45px;
-
-    height:45px;
-
-    margin:8px;
-
-    border-radius:50%;
-
-    background:white;
-
-    color:var(--secondary);
-
-    transition:.3s;
+    .footer-content {
+        flex-direction: column;
+    }
 
 }
-
-
-.footer-icons a:hover{
-
-    background:var(--accent);
-
-    transform:translateY(-5px);
-
-}
-
-
-
-/* ===============================
-   SCROLL TO TOP BUTTON
-================================ */
-
-.scroll-top{
-
-    position:fixed;
-
-    bottom:30px;
-
-    right:30px;
-
-    width:50px;
-
-    height:50px;
-
-    border-radius:50%;
-
-    background:var(--primary);
-
-    color:white;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s;
-
-    z-index:999;
-
-}
-
-
-.scroll-top.active{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-
-
-/* ===============================
-   LOADING ANIMATION
-================================ */
-
-
-.loader{
-
-    width:45px;
-
-    height:45px;
-
-    border-radius:50%;
-
-    border:5px solid #ddd;
-
-    border-top-color:var(--primary);
-
-    animation:rotate 1s linear infinite;
-
-}
-
-
-
-@keyframes rotate{
-
-from{
-
-transform:rotate(0deg);
-
-}
-
-to{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-
-
-/* ===============================
-   AI STATUS INDICATOR
-================================ */
-
-
-.ai-status{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    font-size:14px;
-
-    color:#666;
-
-}
-
-
-
-.ai-status span{
-
-    width:12px;
-
-    height:12px;
-
-    background:#22c55e;
-
-    border-radius:50%;
-
-    animation:pulse 1.5s infinite;
-
-}
-
-
-
-@keyframes pulse{
-
-
-0%{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-
-50%{
-
-transform:scale(1.5);
-
-opacity:.5;
-
-}
-
-
-100%{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-
-}
-
-
-
-/* ===============================
-   AI RESPONSE CARD
-================================ */
-
-
-.ai-response-card{
-
-    background:white;
-
-    border-radius:18px;
-
-    padding:25px;
-
-    margin-top:25px;
-
-    box-shadow:var(--shadow);
-
-    border-left:5px solid var(--primary);
-
-    animation:slideUp .5s ease;
-
-}
-
-
-
-.ai-response-card h3{
-
-    color:var(--secondary);
-
-    margin-bottom:15px;
-
-}
-
-
-
-.ai-response-card ul{
-
-    list-style:disc;
-
-    padding-left:20px;
-
-}
-
-
-
-/* ===============================
-   ANIMATIONS
-================================ */
-
-
-@keyframes slideUp{
-
-
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-
-}
-
-
-
-.fade-in{
-
-    animation:fadeIn 1s ease;
-
-}
-
-
-
-@keyframes fadeIn{
-
-
-from{
-
-opacity:0;
-
-}
-
-
-to{
-
-opacity:1;
-
-}
-
-
-}
-
-
-
-/* ===============================
-   DARK MODE
-================================ */
-
-
-.dark-mode{
-
-    background:#101820;
-
-    color:white;
-
-}
-
-
-
-.dark-mode header{
-
-    background:#000;
-
-}
-
-
-
-.dark-mode .card,
-
-.dark-mode .chat-container,
-
-.dark-mode #contact form,
-
-.dark-mode .box,
-
-.dark-mode .step{
-
-    background:#1f2937;
-
-    color:white;
-
-}
-
-
-
-.dark-mode .chat-box{
-
-    background:#111827;
-
-}
-
-
-
-.dark-mode .ai .bubble{
-
-    background:#374151;
-
-    color:white;
-
-}
-
-
-
-.dark-mode input,
-
-.dark-mode textarea{
-
-    background:#111827;
-
-    color:white;
-
-    border-color:#444;
-
-}
-
-
-
-/* ===============================
-   MOBILE NAVIGATION
-================================ */
-
-
-.menu-toggle{
-
-    display:none;
-
-    font-size:30px;
-
-    cursor:pointer;
-
-}
-
-
-
-@media(max-width:768px){
-
-
-.menu-toggle{
-
-display:block;
-
-}
-
-
-nav{
-
-display:none;
-
-}
-
-
-nav.active{
-
-display:block;
-
-}
-
-
-nav ul{
-
-flex-direction:column;
-
-background:var(--secondary);
-
-padding:20px;
-
-border-radius:10px;
-
-}
-
-
-.hero{
-
-padding-left:5%;
-
-padding-right:5%;
-
-}
-
-
-section{
-
-padding:70px 5%;
-
-}
-
-
-footer{
-
-padding:50px 5%;
-
-}
-
-
-}
-
-
-
-/* ===============================
-   EXTRA BUTTON EFFECTS
-================================ */
-
-
-button{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-
-
-button::after{
-
-content:"";
-
-position:absolute;
-
-width:0;
-
-height:0;
-
-background:rgba(255,255,255,.3);
-
-border-radius:50%;
-
-transform:translate(-50%,-50%);
-
-transition:.5s;
-
-}
-
-
-
-button:active::after{
-
-width:300px;
-
-height:300px;
-
-}
-
-
-
-/* ===============================
-   SECURITY BADGE
-================================ */
-
-
-.security-badge{
-
-display:inline-flex;
-
-align-items:center;
-
-gap:10px;
-
-padding:10px 20px;
-
-background:#dcfce7;
-
-color:#166534;
-
-border-radius:20px;
-
-font-weight:600;
-
-}
-
-
-
-/* ===============================
-   PRINT REPORT STYLE
-================================ */
-
-
-.report{
-
-background:white;
-
-padding:40px;
-
-border-radius:15px;
-
-box-shadow:var(--shadow);
-
-}
-
-
-
-.report h2{
-
-text-align:left;
-
-margin-bottom:20px;
-
-}
-
-
-
-.report-section{
-
-margin-bottom:25px;
-
-}
-
-
-
-/* ===============================
-   FINAL RESPONSIVE FIXES
-================================ */
-
-
-@media(max-width:500px){
-
-
-.logo span{
-
-font-size:16px;
-
-}
-
-
-.hero-left h1{
-
-font-size:30px;
-
-}
-
-
-section h2{
-
-font-size:30px;
-
-}
-
-
-.chat-header{
-
-font-size:18px;
-
-}
-
-
-}
-/* Hero Image */
-
-.hero-image{
-
-    width:100%;
-
-    max-width:550px;
-
-    height:auto;
-
-    border-radius:20px;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.25);
-
-    transition:0.4s ease;
-
-}
-
-.hero-image:hover{
-
-    transform:scale(1.03);
-
-}
-.hero{
-
-    background:
-    linear-gradient(rgba(0,48,73,.75),
-                    rgba(0,48,73,.75)),
-    url("images/disaster.png");
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    min-height:100vh;
-
-}
+```
