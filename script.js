@@ -607,22 +607,4 @@ console.log(
 
 
 };
-/* Flood image */
-.flood-image {
-    background-image: url("./images/flood.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 300px;
-}
 
-/* Rescue image */
-.rescue-image {
-    background-image: url("./images/rescue.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 300px;
-}
