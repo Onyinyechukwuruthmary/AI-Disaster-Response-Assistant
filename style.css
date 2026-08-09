@@ -1,7 +1,4 @@
-/* ==========================================
-   DISASTER AI - GLOBAL STYLES
-========================================== */
-
+```css
 :root {
 
     --primary: #c62828;
@@ -27,7 +24,9 @@
 }
 
 
-/* RESET */
+/* ================================
+   RESET
+================================ */
 
 * {
     margin: 0;
@@ -53,9 +52,9 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
    SIDEBAR
-========================================== */
+================================ */
 
 .sidebar {
 
@@ -66,6 +65,7 @@ body {
     position: fixed;
 
     left: 0;
+
     top: 0;
 
     background: var(--dark);
@@ -90,13 +90,15 @@ body {
 
     padding: 26px 22px;
 
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 }
 
 
 .brand-icon {
 
     width: 42px;
+
     height: 42px;
 
     background: var(--primary);
@@ -106,6 +108,7 @@ body {
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     font-size: 25px;
@@ -193,7 +196,8 @@ body {
 
     color: #9ca3af;
 
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top:
+        1px solid rgba(255,255,255,.08);
 
     font-size: 11px;
 }
@@ -216,6 +220,7 @@ body {
 .status-dot {
 
     width: 8px;
+
     height: 8px;
 
     background: #22c55e;
@@ -224,9 +229,9 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
    MAIN
-========================================== */
+================================ */
 
 .main {
 
@@ -246,7 +251,8 @@ body {
 
     background: white;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid var(--border);
 
     padding: 0 30px;
 
@@ -292,7 +298,8 @@ body {
 
 #languageSelector {
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 8px;
 
@@ -308,7 +315,8 @@ body {
 
 .notification-btn {
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     background: white;
 
@@ -336,9 +344,9 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
    CONTENT
-========================================== */
+================================ */
 
 .content {
 
@@ -358,25 +366,282 @@ body {
 }
 
 
+/* ================================
+   HERO SLIDESHOW
+================================ */
+
+.hero-section {
+
+    margin-bottom: 25px;
+}
+
+
+.hero-slideshow {
+
+    height: 400px;
+
+    position: relative;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: #111827;
+
+    box-shadow: var(--shadow);
+}
+
+
+.slide {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+
+.slide.active {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.slide img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.slide::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.78),
+            rgba(0,0,0,.30),
+            rgba(0,0,0,.05)
+        );
+}
+
+
+.slide-overlay {
+
+    position: absolute;
+
+    z-index: 2;
+
+    left: 50px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    max-width: 570px;
+
+    color: white;
+}
+
+
+.hero-label {
+
+    display: inline-block;
+
+    background:
+        rgba(198,40,40,.9);
+
+    padding: 7px 10px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 15px;
+}
+
+
+.slide-overlay h2 {
+
+    font-size: 38px;
+
+    line-height: 1.1;
+
+    margin-bottom: 15px;
+}
+
+
+.slide-overlay p {
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #f3f4f6;
+
+    margin-bottom: 22px;
+}
+
+
+.hero-button {
+
+    background: white;
+
+    color: var(--primary);
+
+    border: none;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.hero-button:hover {
+
+    transform: translateY(-2px);
+}
+
+
+.slide-control {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 40px;
+
+    height: 40px;
+
+    border: 1px solid rgba(255,255,255,.4);
+
+    background: rgba(0,0,0,.35);
+
+    color: white;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+
+.slide-control:hover {
+
+    background: var(--primary);
+}
+
+
+.prev {
+    left: 18px;
+}
+
+
+.next {
+    right: 18px;
+}
+
+
+.slide-dots {
+
+    position: absolute;
+
+    z-index: 10;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: rgba(255,255,255,.5);
+
+    cursor: pointer;
+}
+
+
+.dot.active {
+
+    background: white;
+
+    transform: scale(1.25);
+}
+
+
+/* ================================
+   DASHBOARD
+================================ */
+
 .dashboard-grid {
 
     display: grid;
 
-    grid-template-columns: minmax(0, 1fr) 310px;
+    grid-template-columns:
+        minmax(0, 1fr) 310px;
 
     gap: 22px;
 }
 
 
-/* ==========================================
+/* ================================
    CHAT
-========================================== */
+================================ */
 
 .chat-container {
 
     background: white;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: var(--radius);
 
@@ -384,7 +649,7 @@ body {
 
     box-shadow: var(--shadow);
 
-    min-height: 690px;
+    min-height: 620px;
 
     display: flex;
 
@@ -396,7 +661,8 @@ body {
 
     padding: 17px 20px;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid var(--border);
 
     display: flex;
 
@@ -457,6 +723,7 @@ body {
     display: inline-block;
 
     width: 7px;
+
     height: 7px;
 
     background: #22c55e;
@@ -467,8 +734,6 @@ body {
 }
 
 
-/* MESSAGES */
-
 .chat-messages {
 
     flex: 1;
@@ -477,9 +742,9 @@ body {
 
     overflow-y: auto;
 
-    min-height: 450px;
+    min-height: 350px;
 
-    max-height: 520px;
+    max-height: 480px;
 }
 
 
@@ -506,6 +771,7 @@ body {
 .message-avatar {
 
     width: 34px;
+
     height: 34px;
 
     flex-shrink: 0;
@@ -550,7 +816,8 @@ body {
 
     padding: 12px 15px;
 
-    border-radius: 4px 14px 14px 14px;
+    border-radius:
+        4px 14px 14px 14px;
 
     font-size: 13px;
 
@@ -564,21 +831,26 @@ body {
 
     color: white;
 
-    border-radius: 14px 4px 14px 14px;
+    border-radius:
+        14px 4px 14px 14px;
 }
 
 
 .message-bubble ul {
 
-    margin: 8px 0 0 20px;
+    margin:
+        8px 0 0 20px;
 }
 
 
-/* TYPING */
+/* ================================
+   TYPING
+================================ */
 
 .typing {
 
-    padding: 0 25px 12px;
+    padding:
+        0 25px 12px;
 
     color: var(--muted);
 
@@ -595,6 +867,7 @@ body {
 .typing span {
 
     width: 5px;
+
     height: 5px;
 
     background: var(--primary);
@@ -632,9 +905,9 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
    QUICK ACTIONS
-========================================== */
+================================ */
 
 .quick-actions {
 
@@ -646,13 +919,15 @@ body {
 
     flex-wrap: wrap;
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 }
 
 
 .quick-actions button {
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     background: white;
 
@@ -663,8 +938,6 @@ body {
     font-size: 11px;
 
     cursor: pointer;
-
-    transition: .2s;
 }
 
 
@@ -676,9 +949,9 @@ body {
 }
 
 
-/* ==========================================
-   INPUT
-========================================== */
+/* ================================
+   CHAT INPUT
+================================ */
 
 .chat-input-area {
 
@@ -686,9 +959,11 @@ body {
 
     gap: 10px;
 
-    padding: 12px 20px 6px;
+    padding:
+        12px 20px 6px;
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 }
 
 
@@ -696,7 +971,8 @@ body {
 
     flex: 1;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 10px;
 
@@ -711,8 +987,6 @@ body {
     font-size: 13px;
 
     min-height: 46px;
-
-    max-height: 120px;
 }
 
 
@@ -739,20 +1013,13 @@ body {
     cursor: pointer;
 
     font-size: 19px;
-
-    transition: .2s;
-}
-
-
-.send-btn:hover {
-
-    background: var(--primary-dark);
 }
 
 
 .input-help {
 
-    padding: 0 20px 12px;
+    padding:
+        0 20px 12px;
 
     color: #9ca3af;
 
@@ -760,9 +1027,9 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
    INFORMATION PANEL
-========================================== */
+================================ */
 
 .information-panel {
 
@@ -778,7 +1045,8 @@ body {
 
     background: white;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: var(--radius);
 
@@ -835,6 +1103,7 @@ body {
 .status-circle {
 
     width: 42px;
+
     height: 42px;
 
     border-radius: 50%;
@@ -848,8 +1117,6 @@ body {
     align-items: center;
 
     justify-content: center;
-
-    font-weight: bold;
 }
 
 
@@ -875,7 +1142,8 @@ body {
 
     background: white;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 9px;
 
@@ -892,8 +1160,6 @@ body {
     margin-bottom: 8px;
 
     cursor: pointer;
-
-    transition: .2s;
 }
 
 
@@ -953,15 +1219,59 @@ body {
 }
 
 
-/* ==========================================
-   PAGE CARDS
-========================================== */
+/* ================================
+   BUTTONS
+================================ */
+
+.primary-btn,
+.secondary-btn {
+
+    border: none;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+.primary-btn {
+
+    background: var(--primary);
+
+    color: white;
+}
+
+
+.primary-btn:hover {
+
+    background: var(--primary-dark);
+}
+
+
+.secondary-btn {
+
+    background: #f1f5f9;
+
+    color: var(--text);
+}
+
+
+/* ================================
+   PAGE CARD
+================================ */
 
 .page-card {
 
     background: white;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: var(--radius);
 
@@ -1001,9 +1311,9 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
    FORMS
-========================================== */
+================================ */
 
 .form-grid {
 
@@ -1012,8 +1322,6 @@ body {
     grid-template-columns: 1fr 1fr;
 
     gap: 18px;
-
-    margin-bottom: 18px;
 }
 
 
@@ -1041,7 +1349,8 @@ body {
 
     width: 100%;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 8px;
 
@@ -1055,17 +1364,17 @@ body {
 }
 
 
-.form-group textarea {
-
-    resize: vertical;
-}
-
-
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
 
     border-color: var(--primary);
+}
+
+
+.form-group textarea {
+
+    resize: vertical;
 }
 
 
@@ -1077,48 +1386,9 @@ body {
 }
 
 
-.primary-btn,
-.secondary-btn {
-
-    border: none;
-
-    padding: 10px 15px;
-
-    border-radius: 8px;
-
-    font-family: inherit;
-
-    font-size: 11px;
-
-    cursor: pointer;
-}
-
-
-.primary-btn {
-
-    background: var(--primary);
-
-    color: white;
-}
-
-
-.secondary-btn {
-
-    background: #f1f5f9;
-
-    color: var(--text);
-}
-
-
-.primary-btn:hover {
-
-    background: var(--primary-dark);
-}
-
-
-/* ==========================================
-   REPORT OUTPUT
-========================================== */
+/* ================================
+   REPORT
+================================ */
 
 .report-output {
 
@@ -1138,7 +1408,8 @@ body {
 
     padding: 13px 15px;
 
-    border-bottom: 1px solid #374151;
+    border-bottom:
+        1px solid #374151;
 
     display: flex;
 
@@ -1168,15 +1439,16 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
    PREPAREDNESS
-========================================== */
+================================ */
 
 .preparedness-grid {
 
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        repeat(2, 1fr);
 
     gap: 16px;
 }
@@ -1184,7 +1456,8 @@ body {
 
 .prep-card {
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     padding: 20px;
 
@@ -1226,9 +1499,9 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
    RESOURCES
-========================================== */
+================================ */
 
 .resources-list {
 
@@ -1248,7 +1521,8 @@ body {
 
     padding: 18px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 10px;
 }
@@ -1278,9 +1552,170 @@ body {
 }
 
 
-/* ==========================================
+/* ================================
+   CONTACT
+================================ */
+
+.contact-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        .85fr 1.15fr;
+
+    gap: 25px;
+
+    align-items: stretch;
+}
+
+
+.contact-info {
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #1f2937
+        );
+
+    color: white;
+
+    padding: 40px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+
+.contact-info .section-label {
+
+    color: #f87171;
+}
+
+
+.contact-info h2 {
+
+    font-size: 30px;
+
+    margin:
+        10px 0 15px;
+}
+
+
+.contact-info > p {
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    max-width: 450px;
+}
+
+
+.contact-details {
+
+    margin-top: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+.contact-detail {
+
+    display: flex;
+
+    gap: 13px;
+
+    align-items: center;
+}
+
+
+.contact-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.contact-detail h3 {
+
+    font-size: 12px;
+
+    margin-bottom: 4px;
+}
+
+
+.contact-detail p {
+
+    color: #9ca3af;
+
+    font-size: 11px;
+}
+
+
+.contact-card {
+
+    background: white;
+
+    padding: 30px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+
+.contact-submit {
+
+    width: 100%;
+
+    padding: 13px;
+}
+
+
+.contact-status {
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* ================================
    FOOTER
-========================================== */
+================================ */
 
 footer {
 
@@ -1296,11 +1731,11 @@ footer {
 }
 
 
-/* ==========================================
+/* ================================
    RESPONSIVE
-========================================== */
+================================ */
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
 
     .dashboard-grid {
 
@@ -1311,7 +1746,13 @@ footer {
 
         display: grid;
 
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .contact-layout {
+
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1325,62 +1766,88 @@ footer {
         transition: .3s;
     }
 
+
     .sidebar.open {
 
         transform: translateX(0);
     }
+
 
     .main {
 
         margin-left: 0;
     }
 
+
     .menu-btn {
 
         display: block;
     }
 
+
     .topbar {
 
         padding: 0 15px;
 
-        gap: 12px;
+        gap: 10px;
     }
 
-    .topbar > div:nth-child(2) {
-
-        flex: 1;
-    }
 
     .topbar h1 {
 
         font-size: 14px;
     }
 
+
     .topbar p {
 
         display: none;
     }
+
 
     .content {
 
         padding: 15px;
     }
 
+
+    .hero-slideshow {
+
+        height: 430px;
+    }
+
+
+    .slide-overlay {
+
+        left: 25px;
+
+        right: 25px;
+    }
+
+
+    .slide-overlay h2 {
+
+        font-size: 28px;
+    }
+
+
     .information-panel {
 
         grid-template-columns: 1fr;
     }
+
 
     .form-grid {
 
         grid-template-columns: 1fr;
     }
 
+
     .preparedness-grid {
 
         grid-template-columns: 1fr;
     }
+
 
     footer {
 
@@ -1393,12 +1860,31 @@ footer {
 
 @media (max-width: 500px) {
 
-    .chat-header {
+    .hero-slideshow {
 
-        align-items: flex-start;
-
-        gap: 10px;
+        height: 450px;
     }
+
+
+    .slide-overlay h2 {
+
+        font-size: 24px;
+    }
+
+
+    .slide-overlay p {
+
+        font-size: 12px;
+    }
+
+
+    .slide-control {
+
+        width: 32px;
+
+        height: 32px;
+    }
+
 
     .quick-actions {
 
@@ -1407,15 +1893,31 @@ footer {
         flex-wrap: nowrap;
     }
 
+
     .quick-actions button {
 
         white-space: nowrap;
     }
 
+
     #languageSelector {
 
-        width: 90px;
+        width: 85px;
 
         padding: 8px 4px;
     }
+
+
+    .contact-info {
+
+        padding: 25px;
+    }
+
+
+    .contact-info h2 {
+
+        font-size: 25px;
+    }
+
 }
+```
