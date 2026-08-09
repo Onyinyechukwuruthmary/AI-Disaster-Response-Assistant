@@ -1658,3 +1658,38 @@ footer {
     }
 }
 ```
+```css
+/* =========================
+   USER CHAT MESSAGE
+========================= */
+
+.message.user {
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.message.user .bubble {
+    background: #0877D1;
+    color: white;
+    border-radius: 15px 15px 3px 15px;
+    border: none;
+}
+
+.message.ai {
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+
+.message.ai .bubble {
+    background: white;
+    color: #344054;
+}
+
+
+/* Typing indicator */
+
+#typing .bubble {
+    color: #667085;
+    font-size: 14px;
+}
+```
