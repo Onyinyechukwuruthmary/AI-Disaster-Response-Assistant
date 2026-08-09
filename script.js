@@ -1,16 +1,24 @@
-/* ==========================================
+```javascript
+/* =========================================================
    DISASTER AI RESPONSE ASSISTANT
-========================================== */
+========================================================= */
 
 
-/* ==========================================
+/* =========================================================
    DOM ELEMENTS
-========================================== */
+========================================================= */
 
-const userInput = document.getElementById("userInput");
-const sendButton = document.getElementById("sendButton");
-const chatMessages = document.getElementById("chatMessages");
-const typingIndicator = document.getElementById("typingIndicator");
+const userInput =
+    document.getElementById("userInput");
+
+const sendButton =
+    document.getElementById("sendButton");
+
+const chatMessages =
+    document.getElementById("chatMessages");
+
+const typingIndicator =
+    document.getElementById("typingIndicator");
 
 const languageSelector =
     document.getElementById("languageSelector");
@@ -25,9 +33,272 @@ const sidebar =
     document.getElementById("sidebar");
 
 
-/* ==========================================
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+document
+    .querySelectorAll(".nav-item")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const section =
+                button.dataset.section;
+
+
+            document
+                .querySelectorAll(".nav-item")
+                .forEach(item => {
+
+                    item.classList.remove("active");
+
+                });
+
+
+            button.classList.add("active");
+
+
+            document
+                .querySelectorAll(".section")
+                .forEach(item => {
+
+                    item.classList.remove("active");
+
+                });
+
+
+            const target =
+                document.getElementById(
+                    section + "Section"
+                );
+
+
+            if (target) {
+
+                target.classList.add("active");
+
+            }
+
+
+            sidebar.classList.remove("open");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+menuBtn.addEventListener("click", () => {
+
+    sidebar.classList.toggle("open");
+
+});
+
+
+
+/* =========================================================
+   SLIDESHOW
+========================================================= */
+
+const slides =
+    document.querySelectorAll(".slide");
+
+const dots =
+    document.querySelectorAll(".dot");
+
+const nextSlideButton =
+    document.getElementById("nextSlide");
+
+const previousSlideButton =
+    document.getElementById("prevSlide");
+
+
+let currentSlide = 0;
+
+let slideTimer;
+
+
+
+function showSlide(index) {
+
+    if (index >= slides.length) {
+
+        currentSlide = 0;
+
+    }
+
+    else if (index < 0) {
+
+        currentSlide =
+            slides.length - 1;
+
+    }
+
+    else {
+
+        currentSlide = index;
+
+    }
+
+
+    slides.forEach((slide, index) => {
+
+        slide.classList.toggle(
+            "active",
+            index === currentSlide
+        );
+
+    });
+
+
+    dots.forEach((dot, index) => {
+
+        dot.classList.toggle(
+            "active",
+            index === currentSlide
+        );
+
+    });
+
+}
+
+
+
+function nextSlide() {
+
+    showSlide(currentSlide + 1);
+
+    restartSlideshow();
+
+}
+
+
+
+function previousSlide() {
+
+    showSlide(currentSlide - 1);
+
+    restartSlideshow();
+
+}
+
+
+
+function startSlideshow() {
+
+    slideTimer =
+        setInterval(() => {
+
+            showSlide(currentSlide + 1);
+
+        }, 6000);
+
+}
+
+
+
+function restartSlideshow() {
+
+    clearInterval(slideTimer);
+
+    startSlideshow();
+
+}
+
+
+
+nextSlideButton.addEventListener(
+    "click",
+    nextSlide
+);
+
+
+previousSlideButton.addEventListener(
+    "click",
+    previousSlide
+);
+
+
+dots.forEach(dot => {
+
+    dot.addEventListener(
+        "click",
+        () => {
+
+            showSlide(
+                Number(dot.dataset.slide)
+            );
+
+            restartSlideshow();
+
+        }
+    );
+
+});
+
+
+startSlideshow();
+
+
+
+/* =========================================================
+   HERO BUTTON FUNCTIONS
+========================================================= */
+
+function openChat() {
+
+    document
+        .querySelector('[data-section="chat"]')
+        .click();
+
+
+    setTimeout(() => {
+
+        userInput.focus();
+
+    }, 300);
+
+}
+
+
+
+function askFloodQuestion() {
+
+    openChat();
+
+    userInput.value =
+        "What should I do during a flood?";
+
+    sendMessage();
+
+}
+
+
+
+function openReport() {
+
+    document
+        .querySelector('[data-section="report"]')
+        .click();
+
+}
+
+
+
+/* =========================================================
    LANGUAGE DATA
-========================================== */
+========================================================= */
 
 const languageNames = {
 
@@ -40,67 +311,68 @@ const languageNames = {
 };
 
 
-/* ==========================================
-   DISASTER RESPONSE KNOWLEDGE BASE
-========================================== */
+
+/* =========================================================
+   DISASTER DATABASE
+========================================================= */
 
 const responseDatabase = {
 
     flood: {
 
         en: `
-Flood safety guidance:
+FLOOD SAFETY GUIDANCE
 
 • Move to higher and safer ground when flooding threatens.
 • Avoid walking or driving through moving floodwater.
 • Keep children away from floodwater.
-• Switch off electricity only if it is safe to do so.
+• Do not enter flooded buildings unless authorities say it is safe.
+• Protect important documents and essential supplies.
 • Follow instructions from authorized emergency responders.
-• Keep emergency documents and essential supplies protected.
         `,
 
         ig: `
-Ndụmọdụ maka nchekwa n'oge idei mmiri:
+NDỤMỌDỤ NKE NCHEBE N'OGE IDEI MMIRI
 
 • Gaa n'ebe dị elu ma dị nchebe mgbe idei mmiri na-abịa.
 • Zere ịga ije ma ọ bụ ịnya ụgbọala n'ime mmiri na-asọ.
 • Debe ụmụaka n'ebe mmiri idei mmiri na-adịghị.
-• Gbanyụọ ọkụ eletrik naanị ma ọ bụrụ na ọ dị nchebe.
-• Soro ntuziaka ndị ọrụ nzaghachi mberede nyere ikike.
-• Chekwaa akwụkwọ dị mkpa na ihe enyemaka mberede.
+• Abanyela n'ụlọ idei mmiri juru ma ọ bụrụ na ndị ọrụ ikike ekwughị na ọ dị nchebe.
+• Chekwaa akwụkwọ dị mkpa na ihe enyemaka.
+• Soro ntuziaka ndị ọrụ nzaghachi mberede.
         `,
 
         ha: `
-Shawarwari na lokacin ambaliya:
+TSARON AMINCI A LOKACIN AMBALIYA
 
 • Kaura zuwa wuri mai tsayi kuma mai aminci.
 • Kada ku yi tafiya ko tuki cikin ruwa mai gudu.
 • Ka nisantar da yara daga ruwan ambaliya.
-• Kashe wutar lantarki kawai idan yana da aminci.
-• Bi umarnin hukumomin agajin gaggawa.
+• Kada ku shiga ginin da ambaliya ta shafa sai hukumomi sun tabbatar da aminci.
 • Kare muhimman takardu da kayan agaji.
+• Bi umarnin jami'an agajin gaggawa.
         `,
 
         yo: `
-Imọran aabo nigba iṣan omi:
+IMỌRAN AABO NIGBA IṢAN OMI
 
-• Gbera lọ si ibi giga ati ibi ailewu.
+• Gbera lọ si ibi giga ati ibi ailewu nigbati iṣan omi ba n bọ.
 • Má ṣe rin tabi wakọ sinu omi ti nṣàn.
 • Jẹ́ kí àwọn ọmọ jìnnà sí omi iṣan omi.
-• Pa ina mọnamọna nikan ti o ba jẹ ailewu.
-• Tẹle awọn ilana awọn oṣiṣẹ pajawiri.
+• Má ṣe wọ ile tí omi ti wọ ayafi ti awọn alaṣẹ ba sọ pe o jẹ ailewu.
 • Daabobo awọn iwe pataki ati awọn ohun elo pajawiri.
+• Tẹle awọn ilana awọn oṣiṣẹ pajawiri.
         `,
 
         fr: `
-Conseils de sécurité en cas d'inondation :
+CONSEILS DE SÉCURITÉ EN CAS D'INONDATION
 
 • Déplacez-vous vers une zone plus élevée et sûre.
 • Évitez de marcher ou de conduire dans l'eau en mouvement.
 • Gardez les enfants éloignés des eaux de crue.
-• Coupez l'électricité uniquement si cela est sans danger.
+• N'entrez pas dans un bâtiment inondé sans autorisation officielle.
+• Protégez les documents importants et les fournitures essentielles.
 • Suivez les instructions des services d'urgence.
-• Protégez les documents importants et les fournitures d'urgence.
         `
     },
 
@@ -108,58 +380,58 @@ Conseils de sécurité en cas d'inondation :
     fire: {
 
         en: `
-Fire emergency guidance:
+FIRE EMERGENCY GUIDANCE
 
-• Leave the building if there is immediate danger.
+• Leave the building immediately if there is immediate danger.
 • Use an emergency exit instead of an elevator.
 • Stay low if smoke is present.
+• Alert others if it is safe.
 • Never return to a burning building.
-• Alert others if it is safe to do so.
 • Contact the appropriate emergency service.
         `,
 
         ig: `
-Ndụmọdụ maka ọkụ:
+NDỤMỌDỤ N'OGE ỌLỌỌGBỤ
 
 • Wepụ onwe gị n'ụlọ ahụ ma ọ bụrụ na ihe egwu dị.
-• Jiri ụzọ mgbapụ mberede kama iji igwe mbuli.
-• Gaa ala ma ọ bụrụ na anwụrụ ọkụ juru ebe ahụ.
-• Alaghachila n'ụlọ na-ere ọkụ.
+• Jiri ụzọ mgbapụ mberede kama igwe mbuli.
+• Gaa ala ma ọ bụrụ na anwụrụ ọkụ dị.
 • Gwa ndị ọzọ ma ọ bụrụ na ọ dị nchebe.
-• Kpọtụrụ ndị ọrụ mberede kwesịrị ekwesị.
+• Alaghachila n'ụlọ na-ere ọkụ.
+• Kpọtụrụ ndị ọrụ mberede.
         `,
 
         ha: `
-Shawarwari game da gobara:
+TSARON GOBARA
 
 • Fita daga ginin idan akwai hatsari.
 • Yi amfani da hanyar fita ta gaggawa maimakon lif.
 • Zauna ƙasa idan hayaki ya cika wurin.
-• Kada ku koma cikin ginin da ke ci.
 • Gargadi wasu idan yana da aminci.
+• Kada ku koma cikin ginin da ke ci.
 • Tuntuɓi hukumar agajin gaggawa.
         `,
 
         yo: `
-Imọran aabo nigba ina:
+AABO NIGBA INA
 
 • Jade kuro ninu ile ti ewu ba wa.
 • Lo ọna ijade pajawiri dipo elevator.
-• Rọra tẹ̀ sílẹ̀ ti ẹfin ba wa.
-• Má ṣe pada sinu ile tí ń jó.
+• Tẹ̀ sílẹ̀ ti ẹfin ba wa.
 • Kilọ fun awọn miiran ti o ba jẹ ailewu.
+• Má ṣe pada sinu ile tí ń jó.
 • Kan si awọn iṣẹ pajawiri.
         `,
 
         fr: `
-Conseils en cas d'incendie :
+CONSEILS EN CAS D'INCENDIE
 
-• Quittez le bâtiment en cas de danger immédiat.
+• Quittez immédiatement le bâtiment en cas de danger.
 • Utilisez une sortie de secours plutôt qu'un ascenseur.
 • Restez près du sol en présence de fumée.
-• Ne retournez jamais dans un bâtiment en feu.
 • Alertez les autres si vous pouvez le faire sans danger.
-• Contactez les services d'urgence appropriés.
+• Ne retournez jamais dans un bâtiment en feu.
+• Contactez les services d'urgence.
         `
     },
 
@@ -167,27 +439,27 @@ Conseils en cas d'incendie :
     earthquake: {
 
         en: `
-During an earthquake:
+EARTHQUAKE SAFETY
 
 • Drop, cover and hold on.
 • Stay away from windows and objects that may fall.
-• If indoors, remain inside until the shaking stops.
+• If indoors, remain inside until shaking stops.
 • If outdoors, move away from buildings and power lines.
-• After the shaking, check for hazards and follow official instructions.
+• After shaking stops, check for hazards and follow official instructions.
         `,
 
         ig: `
-N'oge ala ọma jijiji:
+N'OGE ALA ỌMA JIJỊ
 
 • Gbuo ikpere, kpuchie onwe gị ma jide ihe siri ike.
 • Zere windo na ihe nwere ike ịda.
 • Ọ bụrụ na ị nọ n'ime ụlọ, nọrọ ebe ahụ ruo mgbe ịma jijiji kwụsịrị.
 • Ọ bụrụ na ị nọ n'èzí, pụọ n'akụkụ ụlọ na waya ọkụ.
-• Mgbe ọ kwụsịrị, lelee ihe egwu ma soro ntuziaka ndị ọrụ.
+• Mgbe ọ kwụsịrị, lelee ihe egwu ma soro ntuziaka.
         `,
 
         ha: `
-Lokacin girgizar ƙasa:
+LOKACIN GIRGIZAR ƘASA
 
 • Durƙusa, ɓoye a ƙarƙashin kariya kuma riƙe.
 • Nisanci tagogi da abubuwan da za su iya faɗuwa.
@@ -197,7 +469,7 @@ Lokacin girgizar ƙasa:
         `,
 
         yo: `
-Nigba ìwariri:
+NIGBA ÌWARIRI
 
 • Tẹ́lẹ̀, bo ara rẹ ki o si di nkan mu.
 • Jẹ́ kó jìnà sí ferese ati awọn nkan tí ó lè ṣubú.
@@ -207,7 +479,7 @@ Nigba ìwariri:
         `,
 
         fr: `
-Pendant un tremblement de terre :
+EN CAS DE TREMBLEMENT DE TERRE
 
 • Mettez-vous à terre, protégez-vous et tenez-vous fermement.
 • Éloignez-vous des fenêtres et des objets susceptibles de tomber.
@@ -220,192 +492,190 @@ Pendant un tremblement de terre :
 };
 
 
-/* ==========================================
+
+/* =========================================================
    GENERAL RESPONSES
-========================================== */
+========================================================= */
 
 const generalResponses = {
 
     en: `
-I can help with disaster preparedness, emergency response,
-incident reporting, evacuation communication, public awareness
-and translation.
+I can help you with:
 
-You can ask me things such as:
+• Disaster preparedness
+• Flood safety
+• Fire safety
+• Earthquake guidance
+• Emergency communication
+• Evacuation messages
+• Incident reports
+• Public awareness messages
+• Multilingual disaster communication
 
-• What should I do during a flood?
-• Help me prepare an evacuation message.
-• Create an incident report.
-• Translate this message into Igbo.
-• How can I prepare for a disaster?
+Try asking:
+"What should I do during a flood?"
     `,
 
     ig: `
-Enwere m ike inyere gị aka gbasara nkwadebe maka ọdachi,
-nzaghachi mberede, akụkọ ihe merenụ, ozi mgbapụ,
-ozi mgbasa ozi na ntụgharị asụsụ.
+Enwere m ike inyere gị aka gbasara:
+
+• Nkwadebe maka ọdachi
+• Nchebe n'oge idei mmiri
+• Nchebe n'oge ọkụ
+• Ala ọma jijiji
+• Ozi mberede
+• Ozi mgbapụ
+• Akụkọ ihe merenụ
+• Ozi mgbasa ozi
     `,
 
     ha: `
-Zan iya taimaka maka shirye-shiryen bala'i,
-amsar gaggawa, rahoton abin da ya faru,
-saƙonnin ƙaura da fassarar harshe.
+Zan iya taimaka da:
+
+• Shirye-shiryen bala'i
+• Tsaron ambaliya
+• Tsaron gobara
+• Girgizar ƙasa
+• Saƙonnin gaggawa
+• Saƙonnin ƙaura
+• Rahoton abin da ya faru
+• Saƙonnin wayar da kai
     `,
 
     yo: `
-Mo le ran ọ lọwọ pẹlu igbaradi fun ajalu,
-idahun pajawiri, ijabọ iṣẹlẹ, awọn ifiranṣẹ
-ìkìlọ̀ ati itumọ ede.
+Mo le ran ọ lọwọ pẹlu:
+
+• Igbaradi fun ajalu
+• Aabo nigba iṣan omi
+• Aabo nigba ina
+• Ìwariri
+• Awọn ifiranṣẹ pajawiri
+• Awọn ifiranṣẹ ijade
+• Ijabọ iṣẹlẹ
+• Awọn ifiranṣẹ ìkìlọ̀
     `,
 
     fr: `
-Je peux vous aider avec la préparation aux catastrophes,
-les interventions d'urgence, les rapports d'incident,
-les messages d'évacuation et la traduction.
+Je peux vous aider avec :
+
+• La préparation aux catastrophes
+• La sécurité en cas d'inondation
+• La sécurité incendie
+• Les tremblements de terre
+• Les communications d'urgence
+• Les messages d'évacuation
+• Les rapports d'incident
+• Les messages de sensibilisation
     `
+
 };
 
 
-/* ==========================================
-   TRANSLATION ENGINE
-========================================== */
 
-function translateText(text, language) {
-
-    /*
-        This function uses the built-in disaster
-        translation database.
-
-        For unrestricted translation, connect this
-        function to a backend AI translation API.
-    */
-
-    if (language === "en") {
-        return text;
-    }
-
-    return translateKnownText(text, language);
-}
-
-
-function translateKnownText(text, language) {
-
-    const normalized = text.toLowerCase();
-
-    if (normalized.includes("flood")) {
-
-        return responseDatabase.flood[language];
-
-    }
-
-    if (normalized.includes("fire")) {
-
-        return responseDatabase.fire[language];
-
-    }
-
-    if (
-        normalized.includes("earthquake") ||
-        normalized.includes("earth quake")
-    ) {
-
-        return responseDatabase.earthquake[language];
-
-    }
-
-    return text;
-}
-
-
-/* ==========================================
-   DETECT DISASTER TYPE
-========================================== */
+/* =========================================================
+   DETECT DISASTER
+========================================================= */
 
 function detectDisaster(message) {
 
-    const text = message.toLowerCase();
+    const text =
+        message.toLowerCase();
+
 
     if (
         text.includes("flood") ||
         text.includes("flooding") ||
-        text.includes("water")
+        text.includes("inundation")
     ) {
+
         return "flood";
+
     }
+
 
     if (
         text.includes("fire") ||
         text.includes("burning") ||
         text.includes("smoke")
     ) {
+
         return "fire";
+
     }
+
 
     if (
         text.includes("earthquake") ||
         text.includes("earth quake") ||
         text.includes("tremor")
     ) {
+
         return "earthquake";
+
     }
 
+
     return null;
+
 }
 
 
-/* ==========================================
-   AI RESPONSE ENGINE
-========================================== */
 
-function generateResponse(message, language) {
+/* =========================================================
+   AI RESPONSE
+========================================================= */
 
-    const text = message.toLowerCase();
+function generateResponse(
+    message,
+    language
+) {
 
-    const disasterType = detectDisaster(message);
+    const text =
+        message.toLowerCase();
 
 
-    /* Disaster-specific response */
+    const disaster =
+        detectDisaster(message);
 
-    if (disasterType) {
 
-        return responseDatabase[disasterType][language];
+    if (disaster) {
+
+        return responseDatabase
+            [disaster]
+            [language];
+
     }
 
 
-    /* Evacuation */
+    /* EVACUATION */
 
     if (
         text.includes("evacuation") ||
-        text.includes("evacuate") ||
-        text.includes("evacuation message")
+        text.includes("evacuate")
     ) {
 
-        const messages = {
+        const evacuation = {
 
             en: `
 EVACUATION ALERT
 
-Residents in the affected area are advised to move
-to a safe location using designated evacuation routes.
+Residents in the affected area are advised
+to move to a safe location using designated
+evacuation routes.
 
-Take essential medications, important documents,
-water and other necessary supplies if it is safe
-to do so.
+Take essential supplies if it is safe to do so.
 
 Follow instructions from authorized emergency
-responders and avoid entering restricted areas.
+responders and avoid restricted areas.
             `,
 
             ig: `
 OZI MGBAPỤ
 
-A na-adụ ndị bi n'ebe ihe mberede metụtara ọdụ ka ha
-gaa n'ebe dị nchebe site n'ụzọ mgbapụ akwadoro.
+A na-adụ ndị bi n'ebe ihe mberede metụtara
+ka ha gaa n'ebe dị nchebe site n'ụzọ mgbapụ.
 
-Were ọgwụ dị mkpa, akwụkwọ dị mkpa, mmiri na ihe
-ndị ọzọ dị mkpa ma ọ bụrụ na ọ dị nchebe.
-
-Soro ntuziaka ndị ọrụ nzaghachi mberede nyere ikike.
+Soro ntuziaka ndị ọrụ nzaghachi mberede.
             `,
 
             ha: `
@@ -414,47 +684,49 @@ SAƘON ƘAURA
 Ana shawartar mazauna yankin da abin ya shafa
 su koma wuri mai aminci ta hanyoyin da aka tanada.
 
-Bi umarnin jami'an agajin gaggawa kuma ku guji
-wuraren da aka hana shiga.
+Bi umarnin jami'an agajin gaggawa.
             `,
 
             yo: `
 IFIRANṢẸ́ ÌKÌLỌ̀
 
-A gba awọn olugbe agbegbe ti ewu kan kan nimọran
-lati lọ si ibi ailewu nipasẹ awọn ọna ijade ti a yan.
+A gba awọn olugbe agbegbe ti ewu kan kan
+nimọran lati lọ si ibi ailewu nipasẹ awọn ọna
+ijade ti a yan.
 
-Tẹle awọn ilana awọn oṣiṣẹ pajawiri ki o yago fun
-awọn agbegbe ti a ti fi ofin de.
+Tẹle awọn ilana awọn oṣiṣẹ pajawiri.
             `,
 
             fr: `
 ALERTE D'ÉVACUATION
 
-Les habitants de la zone touchée sont invités à se
-rendre dans un lieu sûr en utilisant les itinéraires
+Les habitants de la zone touchée sont invités
+à se rendre dans un lieu sûr par les itinéraires
 d'évacuation désignés.
 
-Suivez les instructions des services d'urgence
-et évitez les zones interdites.
+Suivez les instructions des services d'urgence.
             `
+
         };
 
-        return messages[language];
+
+        return evacuation[language];
+
     }
 
 
-    /* Incident report */
+    /* INCIDENT REPORT */
 
     if (
         text.includes("incident report") ||
-        text.includes("report")
+        text.includes("create report") ||
+        text.includes("emergency report")
     ) {
 
-        const reports = {
+        return {
 
             en: `
-I can help you prepare an incident report.
+I can help you create an incident report.
 
 Please provide:
 
@@ -462,13 +734,13 @@ Please provide:
 2. Location
 3. Date and time
 4. Severity
-5. What happened
-6. Number of people affected, if known
+5. Description
+6. Number of people affected
 7. Actions already taken
             `,
 
             ig: `
-Enwere m ike inyere gị aka ịkwadebe akụkọ ihe merenụ.
+Enwere m ike inyere gị aka ịmepụta akụkọ ihe merenụ.
 
 Biko nye:
 
@@ -476,13 +748,13 @@ Biko nye:
 2. Ebe o mere
 3. Ụbọchị na oge
 4. Ogo ihe egwu
-5. Ihe mere
-6. Ọnụọgụ ndị metụtara, ma ọ bụrụ na ị maara
+5. Nkọwa
+6. Ọnụọgụ ndị metụtara
 7. Ihe e mere ugbu a
             `,
 
             ha: `
-Zan iya taimaka maka shirya rahoton abin da ya faru.
+Zan iya taimaka maka ƙirƙirar rahoton abin da ya faru.
 
 Da fatan za a bayar da:
 
@@ -490,7 +762,7 @@ Da fatan za a bayar da:
 2. Wuri
 3. Kwanan wata da lokaci
 4. Matsayin haɗari
-5. Abin da ya faru
+5. Bayani
 6. Adadin mutanen da abin ya shafa
 7. Matakan da aka ɗauka
             `,
@@ -504,13 +776,13 @@ Jọwọ pese:
 2. Ibi ti o ṣẹlẹ
 3. Ọjọ ati akoko
 4. Iwọn ewu
-5. Ohun ti o ṣẹlẹ
+5. Apejuwe
 6. Nọmba awọn eniyan ti o kan
 7. Awọn igbesẹ ti a ti gbe
             `,
 
             fr: `
-Je peux vous aider à préparer un rapport d'incident.
+Je peux vous aider à créer un rapport d'incident.
 
 Veuillez fournir :
 
@@ -518,17 +790,17 @@ Veuillez fournir :
 2. Lieu
 3. Date et heure
 4. Niveau de gravité
-5. Ce qui s'est passé
+5. Description
 6. Nombre de personnes touchées
 7. Mesures déjà prises
             `
-        };
 
-        return reports[language];
+        }[language];
+
     }
 
 
-    /* Preparedness */
+    /* PREPAREDNESS */
 
     if (
         text.includes("prepare") ||
@@ -536,34 +808,34 @@ Veuillez fournir :
         text.includes("emergency kit")
     ) {
 
-        const prep = {
+        return {
 
             en: `
-Basic disaster preparedness:
+DISASTER PREPAREDNESS
 
 • Keep an emergency kit.
 • Store safe drinking water.
 • Keep essential medicines available.
-• Save important emergency contacts.
+• Save emergency contacts.
 • Know your evacuation routes.
-• Keep important documents protected.
+• Protect important documents.
 • Follow verified emergency information.
             `,
 
             ig: `
-Nkwadebe maka ọdachi:
+NKWADO MAKA ỌDACHI
 
 • Debe akpa enyemaka mberede.
 • Debe mmiri ọṅụṅụ dị ọcha.
 • Debe ọgwụ ndị dị mkpa.
-• Chekwaa nọmba ekwentị ndị dị mkpa.
+• Chekwaa nọmba mberede.
 • Mara ụzọ mgbapụ.
 • Chekwaa akwụkwọ dị mkpa.
-• Soro ozi mberede sitere n'aka ndị a pụrụ ịtụkwasị obi.
+• Soro ozi mberede a pụrụ ịtụkwasị obi.
             `,
 
             ha: `
-Shirye-shiryen bala'i:
+SHIRYE-SHIRYEN BALA'I
 
 • Shirya jakar agajin gaggawa.
 • Ajiye ruwan sha mai tsafta.
@@ -575,7 +847,7 @@ Shirye-shiryen bala'i:
             `,
 
             yo: `
-Igbaradi fun ajalu:
+IGBARADI FUN AJALU
 
 • Mura apo pajawiri.
 • Ṣe ipamọ omi mimu.
@@ -587,7 +859,7 @@ Igbaradi fun ajalu:
             `,
 
             fr: `
-Préparation aux catastrophes :
+PRÉPARATION AUX CATASTROPHES
 
 • Préparez une trousse d'urgence.
 • Stockez de l'eau potable.
@@ -597,55 +869,54 @@ Préparation aux catastrophes :
 • Protégez les documents importants.
 • Suivez les informations officielles.
             `
-        };
 
-        return prep[language];
-    }
+        }[language];
 
-
-    /* Greeting */
-
-    if (
-        text.includes("hello") ||
-        text.includes("hi") ||
-        text.includes("hey") ||
-        text.includes("good morning") ||
-        text.includes("good afternoon")
-    ) {
-
-        const greetings = {
-
-            en: "Hello! I am DisasterAI. How can I assist you with disaster preparedness or emergency response today?",
-
-            ig: "Ndewo! Abụ m DisasterAI. Kedu ka m ga-esi nyere gị aka gbasara nkwadebe ma ọ bụ nzaghachi mberede?",
-
-            ha: "Sannu! Ni ne DisasterAI. Ta yaya zan taimaka maka shirye-shiryen bala'i ko agajin gaggawa?",
-
-            yo: "Bawo! Emi ni DisasterAI. Bawo ni mo ṣe le ran ọ lọwọ pẹlu igbaradi tabi idahun pajawiri?",
-
-            fr: "Bonjour ! Je suis DisasterAI. Comment puis-je vous aider concernant la préparation ou les interventions d'urgence ?"
-        };
-
-        return greetings[language];
     }
 
 
     return generalResponses[language];
+
 }
 
 
-/* ==========================================
-   ADD MESSAGE
-========================================== */
 
-function addMessage(text, sender = "assistant") {
+/* =========================================================
+   FORMAT MESSAGE
+========================================================= */
 
-    const message = document.createElement("div");
+function formatMessage(text) {
 
-    message.className = `message ${sender}`;
+    return text
+        .replace(/\n/g, "<br>")
+        .replace(/•/g, "<br>•");
+
+}
+
+
+
+/* =========================================================
+   ADD CHAT MESSAGE
+========================================================= */
+
+function addMessage(
+    text,
+    sender = "assistant"
+) {
+
+    const message =
+        document.createElement("div");
+
+
+    message.className =
+        `message ${sender}`;
+
 
     const avatar =
-        sender === "assistant" ? "🤖" : "👤";
+        sender === "assistant"
+            ? "🤖"
+            : "👤";
+
 
     message.innerHTML = `
 
@@ -656,90 +927,99 @@ function addMessage(text, sender = "assistant") {
         <div class="message-content">
 
             <div class="message-name">
-                ${sender === "assistant" ? "DisasterAI" : "You"}
+
+                ${
+                    sender === "assistant"
+                        ? "DisasterAI"
+                        : "You"
+                }
+
             </div>
 
             <div class="message-bubble">
+
                 ${formatMessage(text)}
+
             </div>
 
         </div>
 
     `;
 
+
     chatMessages.appendChild(message);
+
 
     chatMessages.scrollTop =
         chatMessages.scrollHeight;
+
 }
 
 
-/* ==========================================
-   FORMAT MESSAGE
-========================================== */
 
-function formatMessage(text) {
-
-    return text
-        .replace(/\n/g, "<br>")
-        .replace(/•/g, "<br>•");
-}
-
-
-/* ==========================================
+/* =========================================================
    SEND MESSAGE
-========================================== */
+========================================================= */
 
 function sendMessage() {
 
-    const message = userInput.value.trim();
+    const message =
+        userInput.value.trim();
+
 
     if (!message) {
+
         return;
+
     }
 
 
-    addMessage(message, "user");
+    addMessage(
+        message,
+        "user"
+    );
+
 
     userInput.value = "";
 
-    typingIndicator.classList.remove("hidden");
+
+    typingIndicator
+        .classList
+        .remove("hidden");
 
 
-    const selectedLanguage =
+    const language =
         languageSelector.value;
 
-
-    /*
-        Simulate AI processing.
-
-        Replace this block later with:
-
-        fetch("/api/chat", {
-            method: "POST",
-            body: JSON.stringify(...)
-        })
-    */
 
     setTimeout(() => {
 
         const response =
             generateResponse(
                 message,
-                selectedLanguage
+                language
             );
 
-        typingIndicator.classList.add("hidden");
 
-        addMessage(response, "assistant");
+        typingIndicator
+            .classList
+            .add("hidden");
+
+
+        addMessage(
+            response,
+            "assistant"
+        );
 
     }, 700);
+
 }
 
 
-/* ==========================================
+
+/* =========================================================
    SEND BUTTON
-========================================== */
+========================================================= */
 
 sendButton.addEventListener(
     "click",
@@ -747,13 +1027,14 @@ sendButton.addEventListener(
 );
 
 
-/* ==========================================
-   ENTER KEY
-========================================== */
+
+/* =========================================================
+   ENTER TO SEND
+========================================================= */
 
 userInput.addEventListener(
     "keydown",
-    function(event) {
+    event => {
 
         if (
             event.key === "Enter" &&
@@ -763,15 +1044,17 @@ userInput.addEventListener(
             event.preventDefault();
 
             sendMessage();
+
         }
 
     }
 );
 
 
-/* ==========================================
-   QUICK ACTIONS
-========================================== */
+
+/* =========================================================
+   QUICK QUESTIONS
+========================================================= */
 
 document
     .querySelectorAll(".quick-actions button")
@@ -792,15 +1075,17 @@ document
     });
 
 
-/* ==========================================
+
+/* =========================================================
    CLEAR CHAT
-========================================== */
+========================================================= */
 
 clearChat.addEventListener(
     "click",
     () => {
 
         chatMessages.innerHTML = "";
+
 
         addMessage(
             "Chat cleared. How can I assist you?",
@@ -811,9 +1096,10 @@ clearChat.addEventListener(
 );
 
 
-/* ==========================================
+
+/* =========================================================
    LANGUAGE CHANGE
-========================================== */
+========================================================= */
 
 languageSelector.addEventListener(
     "change",
@@ -822,21 +1108,29 @@ languageSelector.addEventListener(
         const language =
             languageSelector.value;
 
-        const welcomeMessages = {
 
-            en: "Language changed to English. How can I help you?",
+        const messages = {
 
-            ig: "Agbanweela asụsụ gaa Igbo. Kedu ka m ga-esi nyere gị aka?",
+            en:
+                "Language changed to English. How can I help you?",
 
-            ha: "An canza harshe zuwa Hausa. Ta yaya zan taimaka?",
+            ig:
+                "Agbanweela asụsụ gaa Igbo. Kedu ka m ga-esi nyere gị aka?",
 
-            yo: "A ti yi ayipada ede si di Yoruba. Bawo ni mo ṣe le ran ọ lọwọ?",
+            ha:
+                "An canza harshe zuwa Hausa. Ta yaya zan taimaka?",
 
-            fr: "La langue a été changée en français. Comment puis-je vous aider?"
+            yo:
+                "A ti yi ayipada ede si di Yoruba. Bawo ni mo ṣe le ran ọ lọwọ?",
+
+            fr:
+                "La langue a été changée en français. Comment puis-je vous aider?"
+
         };
 
+
         addMessage(
-            welcomeMessages[language],
+            messages[language],
             "assistant"
         );
 
@@ -844,77 +1138,10 @@ languageSelector.addEventListener(
 );
 
 
-/* ==========================================
-   SIDEBAR NAVIGATION
-========================================== */
 
-document
-    .querySelectorAll(".nav-item")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const section =
-                    button.dataset.section;
-
-
-                document
-                    .querySelectorAll(".nav-item")
-                    .forEach(item =>
-                        item.classList.remove("active")
-                    );
-
-
-                button.classList.add("active");
-
-
-                document
-                    .querySelectorAll(".section")
-                    .forEach(item =>
-                        item.classList.remove("active")
-                    );
-
-
-                const target =
-                    document.getElementById(
-                        section + "Section"
-                    );
-
-
-                if (target) {
-
-                    target.classList.add("active");
-
-                }
-
-
-                sidebar.classList.remove("open");
-
-            }
-        );
-
-    });
-
-
-/* ==========================================
-   MOBILE MENU
-========================================== */
-
-menuBtn.addEventListener(
-    "click",
-    () => {
-
-        sidebar.classList.toggle("open");
-
-    }
-);
-
-
-/* ==========================================
+/* =========================================================
    RESPONSE TOOLS
-========================================== */
+========================================================= */
 
 document
     .querySelectorAll(".tool-btn")
@@ -930,12 +1157,10 @@ document
 
                 if (tool === "evacuation") {
 
+                    openChat();
+
                     userInput.value =
                         "Help me prepare an evacuation message.";
-
-                    document
-                        .querySelector('[data-section="chat"]')
-                        .click();
 
                     sendMessage();
 
@@ -944,21 +1169,17 @@ document
 
                 if (tool === "report") {
 
-                    document
-                        .querySelector('[data-section="report"]')
-                        .click();
+                    openReport();
 
                 }
 
 
                 if (tool === "awareness") {
 
+                    openChat();
+
                     userInput.value =
                         "Create a public disaster awareness message.";
-
-                    document
-                        .querySelector('[data-section="chat"]')
-                        .click();
 
                     sendMessage();
 
@@ -970,12 +1191,15 @@ document
     });
 
 
-/* ==========================================
-   INCIDENT REPORT GENERATOR
-========================================== */
+
+/* =========================================================
+   INCIDENT REPORT
+========================================================= */
 
 const generateReport =
-    document.getElementById("generateReport");
+    document.getElementById(
+        "generateReport"
+    );
 
 
 generateReport.addEventListener(
@@ -983,35 +1207,55 @@ generateReport.addEventListener(
     () => {
 
         const type =
-            document.getElementById("incidentType").value;
+            document.getElementById(
+                "incidentType"
+            ).value;
+
 
         const location =
-            document.getElementById("incidentLocation").value;
+            document.getElementById(
+                "incidentLocation"
+            ).value;
+
 
         const date =
-            document.getElementById("incidentDate").value;
+            document.getElementById(
+                "incidentDate"
+            ).value;
+
 
         const severity =
-            document.getElementById("incidentSeverity").value;
+            document.getElementById(
+                "incidentSeverity"
+            ).value;
+
 
         const description =
-            document.getElementById("incidentDescription").value;
+            document.getElementById(
+                "incidentDescription"
+            ).value;
 
 
-        if (!type || !location || !description) {
+        if (
+            !type ||
+            !location ||
+            !description
+        ) {
 
             alert(
                 "Please complete the incident type, location and description."
             );
 
             return;
+
         }
 
 
         const report = `
 
-AI DISASTER RESPONSE INCIDENT REPORT
-====================================
+AI DISASTER RESPONSE
+INCIDENT REPORT
+================================
 
 Incident Type:
 ${type}
@@ -1029,33 +1273,43 @@ Description:
 ${description}
 
 Initial Response:
-Information recorded through DisasterAI Response Assistant.
+Information recorded through
+DisasterAI Response Assistant.
 
-Recommended Next Step:
-Notify the appropriate authorized emergency response organization
-and follow verified emergency instructions.
+Recommended Action:
+Notify the appropriate authorized
+emergency response organization
+and follow verified emergency
+instructions.
 
-====================================
+================================
 Generated by DisasterAI
+
         `;
 
 
         document
-            .getElementById("reportText")
+            .getElementById(
+                "reportText"
+            )
             .textContent = report;
 
 
         document
-            .getElementById("reportOutput")
-            .classList.remove("hidden");
+            .getElementById(
+                "reportOutput"
+            )
+            .classList
+            .remove("hidden");
 
     }
 );
 
 
-/* ==========================================
+
+/* =========================================================
    COPY REPORT
-========================================== */
+========================================================= */
 
 document
     .getElementById("copyReport")
@@ -1064,23 +1318,139 @@ document
         async () => {
 
             const text =
-                document.getElementById("reportText")
+                document
+                    .getElementById(
+                        "reportText"
+                    )
                     .textContent;
 
 
-            await navigator.clipboard.writeText(text);
+            try {
+
+                await navigator
+                    .clipboard
+                    .writeText(text);
 
 
-            alert("Report copied to clipboard.");
+                alert(
+                    "Incident report copied."
+                );
+
+            }
+
+            catch (error) {
+
+                alert(
+                    "Unable to copy the report."
+                );
+
+            }
 
         }
     );
 
 
-/* ==========================================
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+const contactForm =
+    document.getElementById(
+        "contactForm"
+    );
+
+
+const contactStatus =
+    document.getElementById(
+        "contactStatus"
+    );
+
+
+contactForm.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "contactName"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "contactEmail"
+            ).value.trim();
+
+
+        const subject =
+            document.getElementById(
+                "contactSubject"
+            ).value.trim();
+
+
+        const message =
+            document.getElementById(
+                "contactMessage"
+            ).value.trim();
+
+
+        if (
+            !name ||
+            !email ||
+            !subject ||
+            !message
+        ) {
+
+            alert(
+                "Please complete all contact fields."
+            );
+
+            return;
+
+        }
+
+
+        /*
+            FRONTEND DEMO
+
+            At this stage the form validates
+            and displays a success message.
+
+            For actual email delivery, connect
+            this form to a backend email service.
+        */
+
+
+        contactStatus
+            .classList
+            .remove("hidden");
+
+
+        contactForm.reset();
+
+
+        setTimeout(() => {
+
+            contactStatus
+                .classList
+                .add("hidden");
+
+        }, 6000);
+
+    }
+);
+
+
+
+/* =========================================================
    INITIALIZATION
-========================================== */
+========================================================= */
 
 console.log(
-    "DisasterAI Response Assistant initialized successfully."
+    "DisasterAI initialized successfully."
 );
+```
