@@ -1693,3 +1693,34 @@ footer {
     font-size: 14px;
 }
 ```
+.message {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.message.ai {
+    justify-content: flex-start;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.ai .bubble {
+    background: #ffffff;
+    color: #344054;
+    border: 1px solid #d9e2ec;
+    border-radius: 15px 15px 15px 3px;
+}
+
+.message.user .bubble {
+    background: #0877D1;
+    color: #ffffff;
+    border-radius: 15px 15px 3px 15px;
+}
+
+.message .bubble {
+    max-width: 75%;
+    padding: 15px 18px;
+    line-height: 1.6;
+}
