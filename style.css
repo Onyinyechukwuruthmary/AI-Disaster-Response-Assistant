@@ -1,2249 +1,1421 @@
-/* =====================================================
-   AI DISASTER RESPONSE ASSISTANT
-   STYLE.CSS
-   PART 1
-===================================================== */
+/* ==========================================
+   DISASTER AI - GLOBAL STYLES
+========================================== */
 
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+:root {
 
-/* ===============================
-   RESET
-================================ */
+    --primary: #c62828;
+    --primary-dark: #8e1c1c;
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
+    --dark: #111827;
+    --dark-2: #1f2937;
 
-body{
+    --text: #172033;
+    --muted: #6b7280;
 
-    font-family:'Poppins',sans-serif;
+    --background: #f5f7fa;
+    --white: #ffffff;
 
-    background:#f4f8fb;
+    --border: #e5e7eb;
 
-    color:#333;
+    --success: #16a34a;
 
-    line-height:1.7;
+    --shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
 
+    --radius: 14px;
 }
-
-/* ===============================
-   VARIABLES
-================================ */
-
-:root{
-
-    --primary:#d62828;
-
-    --secondary:#003049;
-
-    --accent:#fcbf49;
 
-    --light:#ffffff;
 
-    --dark:#222;
+/* RESET */
 
-    --gray:#666;
-
-    --border:#e5e5e5;
-
-    --shadow:0 10px 25px rgba(0,0,0,.12);
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-/* ===============================
-   LINKS
-================================ */
 
-a{
 
-    text-decoration:none;
-
-    color:inherit;
-
+html {
+    scroll-behavior: smooth;
 }
 
-ul{
 
-    list-style:none;
-
-}
+body {
 
-img{
+    font-family: "Inter", sans-serif;
 
-    width:100%;
+    background: var(--background);
 
-    display:block;
+    color: var(--text);
 
+    min-height: 100vh;
 }
 
-/* ===============================
-   HEADER
-================================ */
 
-header{
+/* ==========================================
+   SIDEBAR
+========================================== */
 
-    position:fixed;
+.sidebar {
 
-    top:0;
+    width: 260px;
 
-    left:0;
+    height: 100vh;
 
-    width:100%;
+    position: fixed;
 
-    background:var(--secondary);
+    left: 0;
+    top: 0;
 
-    color:white;
+    background: var(--dark);
 
-    display:flex;
+    color: white;
 
-    justify-content:space-between;
+    display: flex;
 
-    align-items:center;
+    flex-direction: column;
 
-    padding:18px 8%;
-
-    z-index:1000;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
-
+    z-index: 1000;
 }
 
-.logo{
 
-    display:flex;
+.brand {
 
-    align-items:center;
+    display: flex;
 
-    gap:10px;
+    align-items: center;
 
-    font-size:24px;
+    gap: 12px;
 
-    font-weight:700;
+    padding: 26px 22px;
 
+    border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
-.logo i{
 
-    color:var(--accent);
+.brand-icon {
 
-    font-size:30px;
+    width: 42px;
+    height: 42px;
 
-}
+    background: var(--primary);
 
-/* ===============================
-   NAVIGATION
-================================ */
+    border-radius: 10px;
 
-nav ul{
+    display: flex;
 
-    display:flex;
+    justify-content: center;
+    align-items: center;
 
-    gap:30px;
+    font-size: 25px;
 
+    font-weight: 800;
 }
 
-nav a{
 
-    color:white;
+.brand h2 {
+    font-size: 18px;
+}
 
-    font-weight:500;
 
-    transition:.3s;
+.brand small {
 
-}
+    color: #9ca3af;
 
-nav a:hover{
+    font-size: 11px;
+}
 
-    color:var(--accent);
 
-}
+.navigation {
 
-/* ===============================
-   HERO
-================================ */
+    padding: 20px 14px;
 
-.hero{
+    display: flex;
 
-    min-height:100vh;
+    flex-direction: column;
 
-    display:flex;
+    gap: 6px;
+}
 
-    align-items:center;
 
-    justify-content:space-between;
+.nav-item {
 
-    padding:140px 8% 80px;
+    border: none;
 
-    gap:60px;
+    background: transparent;
 
-    background:linear-gradient(135deg,#003049,#1b4965);
+    color: #cbd5e1;
 
-    color:white;
+    padding: 13px 14px;
 
-}
+    border-radius: 10px;
 
-.hero-left{
+    display: flex;
 
-    flex:1;
+    gap: 12px;
 
-}
+    align-items: center;
 
-.hero-left h1{
+    text-align: left;
 
-    font-size:55px;
+    cursor: pointer;
 
-    line-height:1.2;
+    font-family: inherit;
 
-    margin-bottom:25px;
+    font-size: 14px;
 
+    transition: .2s;
 }
-
-.hero-left p{
 
-    font-size:18px;
 
-    margin-bottom:35px;
+.nav-item:hover {
 
-    color:#f5f5f5;
+    background: rgba(255,255,255,.06);
 
+    color: white;
 }
 
-/* ===============================
-   BUTTONS
-================================ */
 
-.hero-buttons{
+.nav-item.active {
 
-    display:flex;
+    background: var(--primary);
 
-    gap:20px;
-
-    flex-wrap:wrap;
-
+    color: white;
 }
 
-.hero-buttons button{
 
-    padding:15px 35px;
+.sidebar-footer {
 
-    border:none;
+    margin-top: auto;
 
-    border-radius:8px;
+    padding: 20px;
 
-    font-size:16px;
+    color: #9ca3af;
 
-    cursor:pointer;
+    border-top: 1px solid rgba(255,255,255,.08);
 
-    transition:.3s;
-
-    font-weight:600;
-
+    font-size: 11px;
 }
-
-.hero-buttons button:first-child{
 
-    background:var(--primary);
 
-    color:white;
+.status {
 
-}
+    color: white;
 
-.hero-buttons button:first-child:hover{
+    margin-bottom: 8px;
 
-    background:#b71c1c;
+    display: flex;
 
-    transform:translateY(-3px);
+    align-items: center;
 
+    gap: 8px;
 }
 
-.outline{
 
-    background:transparent;
+.status-dot {
 
-    border:2px solid white !important;
+    width: 8px;
+    height: 8px;
 
-    color:white;
+    background: #22c55e;
 
+    border-radius: 50%;
 }
-
-.outline:hover{
-
-    background:white;
-
-    color:var(--secondary);
 
-}
 
-/* ===============================
-   HERO IMAGE
-================================ */
+/* ==========================================
+   MAIN
+========================================== */
 
-.hero-right{
+.main {
 
-    flex:1;
+    margin-left: 260px;
 
-    display:flex;
+    min-height: 100vh;
 
-    justify-content:center;
+    display: flex;
 
+    flex-direction: column;
 }
-
-.hero-right img{
 
-    width:100%;
 
-    max-width:500px;
+.topbar {
 
-    animation:floatImage 5s ease-in-out infinite;
+    height: 82px;
 
-}
+    background: white;
 
-/* ===============================
-   FLOAT ANIMATION
-================================ */
+    border-bottom: 1px solid var(--border);
 
-@keyframes floatImage{
+    padding: 0 30px;
 
-0%{
+    display: flex;
 
-transform:translateY(0);
+    align-items: center;
 
-}
+    justify-content: space-between;
 
-50%{
+    position: sticky;
 
-transform:translateY(-20px);
+    top: 0;
 
+    z-index: 100;
 }
 
-100%{
 
-transform:translateY(0);
+.topbar h1 {
 
-}
+    font-size: 19px;
 
+    margin-bottom: 4px;
 }
 
-/* ===============================
-   SECTION
-================================ */
 
-section{
+.topbar p {
 
-    padding:90px 8%;
+    color: var(--muted);
 
+    font-size: 12px;
 }
-
-section h2{
 
-    text-align:center;
 
-    font-size:40px;
+.topbar-actions {
 
-    color:var(--secondary);
+    display: flex;
 
-    margin-bottom:50px;
+    align-items: center;
 
+    gap: 12px;
 }
-
-/* ===============================
-   RESPONSIVE
-================================ */
-
-@media(max-width:992px){
 
-.hero{
 
-flex-direction:column;
+#languageSelector {
 
-text-align:center;
+    border: 1px solid var(--border);
 
-padding-top:150px;
+    border-radius: 8px;
 
-}
-
-.hero-left h1{
-
-font-size:42px;
-
-}
+    padding: 9px 12px;
 
-.hero-buttons{
+    background: white;
 
-justify-content:center;
+    cursor: pointer;
 
+    font-family: inherit;
 }
 
-nav ul{
 
-gap:15px;
+.notification-btn {
 
-}
-
-}
+    border: 1px solid var(--border);
 
-@media(max-width:768px){
+    background: white;
 
-header{
+    width: 40px;
 
-flex-direction:column;
+    height: 40px;
 
-padding:20px;
+    border-radius: 8px;
 
+    cursor: pointer;
 }
 
-nav{
 
-margin-top:15px;
+.menu-btn {
 
-}
+    display: none;
 
-nav ul{
+    border: none;
 
-flex-wrap:wrap;
+    background: transparent;
 
-justify-content:center;
+    font-size: 22px;
 
+    cursor: pointer;
 }
 
-.hero-left h1{
 
-font-size:34px;
+/* ==========================================
+   CONTENT
+========================================== */
 
-}
-
-.hero-left p{
+.content {
 
-font-size:16px;
-
-}
+    padding: 30px;
 
+    flex: 1;
 }
-/* =====================================================
-   AI DISASTER RESPONSE ASSISTANT
-   STYLE.CSS
-   PART 2
 
-   FEATURES + AI CHAT INTERFACE
-===================================================== */
 
-
-/* ===============================
-   FEATURES SECTION
-================================ */
-
-.features{
+.section {
+    display: none;
+}
 
-    background:#ffffff;
 
+.section.active {
+    display: block;
 }
-
 
-.cards{
 
-    display:grid;
+.dashboard-grid {
 
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    display: grid;
 
-    gap:30px;
+    grid-template-columns: minmax(0, 1fr) 310px;
 
+    gap: 22px;
 }
 
 
-/* ===============================
-   FEATURE CARD
-================================ */
+/* ==========================================
+   CHAT
+========================================== */
 
-.card{
+.chat-container {
 
-    background:white;
+    background: white;
 
-    padding:35px 30px;
+    border: 1px solid var(--border);
 
-    border-radius:15px;
+    border-radius: var(--radius);
 
-    box-shadow:var(--shadow);
+    overflow: hidden;
 
-    text-align:center;
+    box-shadow: var(--shadow);
 
-    transition:.4s;
+    min-height: 690px;
 
-    border:1px solid var(--border);
+    display: flex;
 
-    position:relative;
-
-    overflow:hidden;
-
+    flex-direction: column;
 }
-
-
-.card::before{
-
-    content:"";
 
-    position:absolute;
 
-    width:100%;
+.chat-header {
 
-    height:5px;
+    padding: 17px 20px;
 
-    top:0;
+    border-bottom: 1px solid var(--border);
 
-    left:0;
+    display: flex;
 
-    background:var(--primary);
+    justify-content: space-between;
 
+    align-items: center;
 }
 
 
-.card:hover{
+.assistant-profile {
 
-    transform:translateY(-10px);
+    display: flex;
 
-    box-shadow:0 15px 35px rgba(0,0,0,.18);
+    gap: 12px;
 
+    align-items: center;
 }
 
 
-.card i{
+.assistant-avatar {
 
-    font-size:45px;
+    width: 42px;
 
-    color:var(--primary);
+    height: 42px;
 
-    margin-bottom:20px;
+    background: #fee2e2;
 
-}
-
+    border-radius: 12px;
 
-.card h3{
+    display: flex;
 
-    color:var(--secondary);
+    align-items: center;
 
-    font-size:22px;
+    justify-content: center;
 
-    margin-bottom:15px;
-
+    font-size: 21px;
 }
-
 
-.card p{
 
-    color:var(--gray);
+.assistant-profile h3 {
 
-    font-size:15px;
+    font-size: 14px;
 
-    line-height:1.8;
-
+    margin-bottom: 4px;
 }
-
 
 
-/* ===============================
-   CHAT SECTION
-================================ */
+.assistant-profile span {
 
-.chat-section{
+    font-size: 11px;
 
-    background:#eef4f8;
-
+    color: var(--muted);
 }
 
 
-.chat-section h2{
+.online-dot {
 
-    margin-bottom:40px;
+    display: inline-block;
 
-}
+    width: 7px;
+    height: 7px;
 
+    background: #22c55e;
 
+    border-radius: 50%;
 
-/* ===============================
-   CHAT CONTAINER
-================================ */
+    margin-right: 4px;
+}
 
-.chat-container{
 
-    max-width:850px;
+/* MESSAGES */
 
-    margin:auto;
+.chat-messages {
 
-    background:white;
+    flex: 1;
 
-    border-radius:20px;
+    padding: 25px;
 
-    overflow:hidden;
+    overflow-y: auto;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    min-height: 450px;
 
+    max-height: 520px;
 }
-
-
-
-/* ===============================
-   CHAT HEADER
-================================ */
-
-.chat-header{
-
-    background:var(--secondary);
-
-    color:white;
-
-    padding:20px;
 
-    font-size:22px;
 
-    font-weight:600;
+.message {
 
-    display:flex;
+    display: flex;
 
-    align-items:center;
+    gap: 10px;
 
-    gap:12px;
+    margin-bottom: 20px;
 
+    max-width: 90%;
 }
 
 
-.chat-header i{
+.message.user {
 
-    color:var(--accent);
+    margin-left: auto;
 
-    font-size:30px;
-
+    flex-direction: row-reverse;
 }
 
 
+.message-avatar {
 
-/* ===============================
-   CHAT MESSAGE AREA
-================================ */
+    width: 34px;
+    height: 34px;
 
-.chat-box{
+    flex-shrink: 0;
 
-    height:450px;
+    border-radius: 9px;
 
-    padding:25px;
+    background: #f1f5f9;
 
-    overflow-y:auto;
+    display: flex;
 
-    background:#f7f9fb;
+    align-items: center;
 
+    justify-content: center;
 }
 
 
+.message.user .message-avatar {
 
-/* ===============================
-   MESSAGE STYLE
-================================ */
+    background: #fee2e2;
+}
 
-.message{
 
-    display:flex;
+.message-name {
 
-    margin-bottom:20px;
+    font-size: 10px;
 
-    animation:messageAppear .3s ease;
+    color: var(--muted);
 
+    margin-bottom: 5px;
 }
-
-
-@keyframes messageAppear{
 
 
-from{
+.message.user .message-name {
 
-opacity:0;
-
-transform:translateY(10px);
-
+    text-align: right;
 }
 
 
-to{
+.message-bubble {
 
-opacity:1;
+    background: #f3f4f6;
 
-transform:translateY(0);
+    padding: 12px 15px;
 
-}
+    border-radius: 4px 14px 14px 14px;
 
+    font-size: 13px;
 
+    line-height: 1.6;
 }
-
 
 
-/* AI MESSAGE */
+.message.user .message-bubble {
 
-.message.ai{
+    background: var(--primary);
 
-    justify-content:flex-start;
+    color: white;
 
+    border-radius: 14px 4px 14px 14px;
 }
 
 
+.message-bubble ul {
 
-/* USER MESSAGE */
-
-.message.user{
-
-    justify-content:flex-end;
-
+    margin: 8px 0 0 20px;
 }
 
 
+/* TYPING */
 
-.bubble{
+.typing {
 
-    max-width:70%;
+    padding: 0 25px 12px;
 
-    padding:15px 20px;
+    color: var(--muted);
 
-    border-radius:18px;
+    font-size: 11px;
 
-    line-height:1.7;
+    display: flex;
 
-    font-size:15px;
+    align-items: center;
 
+    gap: 4px;
 }
-
 
 
-/* AI BUBBLE */
+.typing span {
 
-.ai .bubble{
+    width: 5px;
+    height: 5px;
 
-    background:#e9eef3;
+    background: var(--primary);
 
-    color:#333;
+    border-radius: 50%;
 
-    border-bottom-left-radius:5px;
-
+    animation: bounce 1s infinite;
 }
-
-
-
-/* USER BUBBLE */
-
-.user .bubble{
 
-    background:var(--primary);
 
-    color:white;
-
-    border-bottom-right-radius:5px;
-
+.typing span:nth-child(2) {
+    animation-delay: .2s;
 }
-
-
-
-/* ===============================
-   CHAT INPUT
-================================ */
-
-.chat-input{
-
-    display:flex;
-
-    gap:15px;
 
-    padding:20px;
 
-    border-top:1px solid var(--border);
-
-    background:white;
-
+.typing span:nth-child(3) {
+    animation-delay: .4s;
 }
-
-
-
-.chat-input textarea{
-
-    flex:1;
-
-    height:60px;
-
-    resize:none;
-
-    border:1px solid #ccc;
 
-    border-radius:12px;
 
-    padding:15px;
+@keyframes bounce {
 
-    font-size:15px;
+    0%,100% {
+        transform: translateY(0);
+    }
 
-    outline:none;
-
-    transition:.3s;
-
+    50% {
+        transform: translateY(-5px);
+    }
 }
-
-
 
-.chat-input textarea:focus{
 
-    border-color:var(--primary);
-
+.hidden {
+    display: none !important;
 }
-
-
-
-/* SEND BUTTON */
 
-.chat-input button{
 
-    width:65px;
+/* ==========================================
+   QUICK ACTIONS
+========================================== */
 
-    height:60px;
-
-    border:none;
-
-    background:var(--primary);
-
-    color:white;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
-    font-size:22px;
-
-    transition:.3s;
-
-}
+.quick-actions {
 
+    padding: 12px 20px;
 
-.chat-input button:hover{
+    display: flex;
 
-    background:#a4161a;
+    gap: 7px;
 
-    transform:scale(1.05);
+    flex-wrap: wrap;
 
+    border-top: 1px solid var(--border);
 }
 
 
+.quick-actions button {
 
-/* ===============================
-   SCROLL BAR
-================================ */
+    border: 1px solid var(--border);
 
+    background: white;
 
-.chat-box::-webkit-scrollbar{
+    padding: 8px 11px;
 
-    width:8px;
+    border-radius: 7px;
 
-}
-
+    font-size: 11px;
 
-.chat-box::-webkit-scrollbar-track{
+    cursor: pointer;
 
-    background:#eee;
-
+    transition: .2s;
 }
-
 
-.chat-box::-webkit-scrollbar-thumb{
 
-    background:var(--secondary);
+.quick-actions button:hover {
 
-    border-radius:10px;
+    border-color: var(--primary);
 
+    color: var(--primary);
 }
 
 
+/* ==========================================
+   INPUT
+========================================== */
 
-/* ===============================
-   TYPING INDICATOR
-================================ */
+.chat-input-area {
 
+    display: flex;
 
-.typing{
+    gap: 10px;
 
-    display:flex;
+    padding: 12px 20px 6px;
 
-    gap:5px;
-
-    align-items:center;
-
+    border-top: 1px solid var(--border);
 }
 
 
-.typing span{
+#userInput {
 
-    width:8px;
+    flex: 1;
 
-    height:8px;
+    border: 1px solid var(--border);
 
-    background:var(--primary);
+    border-radius: 10px;
 
-    border-radius:50%;
+    padding: 12px 14px;
 
-    animation:typingAnimation 1s infinite;
+    resize: none;
 
-}
+    outline: none;
 
+    font-family: inherit;
 
-.typing span:nth-child(2){
+    font-size: 13px;
 
-    animation-delay:.2s;
+    min-height: 46px;
 
+    max-height: 120px;
 }
-
 
-.typing span:nth-child(3){
 
-    animation-delay:.4s;
+#userInput:focus {
 
+    border-color: var(--primary);
 }
 
 
-@keyframes typingAnimation{
+.send-btn {
 
+    width: 46px;
 
-0%,100%{
+    height: 46px;
 
-opacity:.3;
+    border: none;
 
-transform:translateY(0);
+    border-radius: 10px;
 
-}
-
-
-50%{
-
-opacity:1;
+    background: var(--primary);
 
-transform:translateY(-5px);
+    color: white;
 
-}
+    cursor: pointer;
 
+    font-size: 19px;
 
+    transition: .2s;
 }
-
-
-
-/* ===============================
-   FEATURE CARD RESPONSIVE
-================================ */
 
 
-@media(max-width:768px){
+.send-btn:hover {
 
-
-.cards{
-
-grid-template-columns:1fr;
-
+    background: var(--primary-dark);
 }
-
 
-.chat-box{
 
-height:380px;
+.input-help {
 
-}
-
+    padding: 0 20px 12px;
 
-.bubble{
+    color: #9ca3af;
 
-max-width:85%;
-
+    font-size: 9px;
 }
-
 
-.chat-input{
 
-flex-direction:column;
+/* ==========================================
+   INFORMATION PANEL
+========================================== */
 
-}
-
+.information-panel {
 
-.chat-input button{
+    display: flex;
 
-width:100%;
+    flex-direction: column;
 
+    gap: 18px;
 }
 
-
-}
-/* =====================================================
-   AI DISASTER RESPONSE ASSISTANT
-   STYLE.CSS
-   PART 3
 
-   WORKFLOW + DASHBOARD + CONTACT FORM
-===================================================== */
+.panel-card {
 
+    background: white;
 
-/* ===============================
-   WORKFLOW SECTION
-================================ */
+    border: 1px solid var(--border);
 
-#workflow{
+    border-radius: var(--radius);
 
-    background:#f4f8fb;
+    padding: 20px;
 
+    box-shadow: var(--shadow);
 }
 
 
+.panel-card h3 {
 
-.workflow{
+    font-size: 14px;
 
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
-    gap:25px;
-
-    margin-top:40px;
-
+    margin-bottom: 15px;
 }
 
 
+.panel-title {
 
-/* ===============================
-   WORKFLOW STEP
-================================ */
+    display: flex;
 
+    align-items: center;
 
-.step{
+    justify-content: space-between;
+}
 
-    background:white;
 
-    padding:35px 20px;
+.live-badge {
 
-    text-align:center;
+    font-size: 9px;
 
-    border-radius:15px;
+    padding: 4px 7px;
 
-    box-shadow:var(--shadow);
+    border-radius: 5px;
 
-    position:relative;
+    background: #dcfce7;
 
-    transition:.3s;
+    color: #15803d;
 
+    font-weight: 700;
 }
 
 
-.step:hover{
+.emergency-status {
 
-    transform:translateY(-8px);
+    display: flex;
 
-    background:var(--secondary);
+    align-items: center;
 
-    color:white;
-
+    gap: 12px;
 }
-
-
-
-.step h3{
 
-    width:60px;
 
-    height:60px;
+.status-circle {
 
-    margin:auto;
+    width: 42px;
+    height: 42px;
 
-    display:flex;
+    border-radius: 50%;
 
-    justify-content:center;
+    background: #dcfce7;
 
-    align-items:center;
+    color: #15803d;
 
-    background:var(--primary);
+    display: flex;
 
-    color:white;
+    align-items: center;
 
-    border-radius:50%;
+    justify-content: center;
 
-    font-size:25px;
-
-    margin-bottom:20px;
-
+    font-weight: bold;
 }
-
-
 
-.step p{
 
-    font-weight:600;
+.emergency-status strong {
 
-    font-size:16px;
-
+    font-size: 12px;
 }
-
-
-
-/* Connecting Line Effect */
 
-.step:not(:last-child)::after{
 
-    content:"→";
+.emergency-status p {
 
-    position:absolute;
+    font-size: 10px;
 
-    right:-25px;
+    color: var(--muted);
 
-    top:50%;
-
-    font-size:30px;
-
-    color:var(--primary);
-
+    margin-top: 4px;
 }
 
 
+.tool-btn {
 
-@media(max-width:900px){
+    width: 100%;
 
-.step:not(:last-child)::after{
+    background: white;
 
-display:none;
+    border: 1px solid var(--border);
 
-}
+    border-radius: 9px;
 
-}
+    padding: 12px;
 
+    display: flex;
 
+    gap: 11px;
 
-/* ===============================
-   DASHBOARD SECTION
-================================ */
+    align-items: center;
 
+    text-align: left;
 
-#dashboard{
+    margin-bottom: 8px;
 
-    background:white;
+    cursor: pointer;
 
+    transition: .2s;
 }
 
 
+.tool-btn:hover {
 
-.dashboard{
+    border-color: var(--primary);
 
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:30px;
-
+    transform: translateY(-1px);
 }
-
-
-
-/* ===============================
-   DASHBOARD BOX
-================================ */
-
-
-.box{
-
-    background:linear-gradient(
-
-    135deg,
-
-    var(--secondary),
-
-    #1b4965
-
-    );
-
-    color:white;
-
-    padding:35px;
-
-    border-radius:20px;
-
-    text-align:center;
 
-    box-shadow:var(--shadow);
 
-    transition:.3s;
+.tool-btn > span {
 
+    font-size: 18px;
 }
 
 
+.tool-btn strong {
 
-.box:hover{
+    display: block;
 
-    transform:scale(1.05);
+    font-size: 11px;
 
+    margin-bottom: 3px;
 }
 
 
+.tool-btn small {
 
-.box h3{
+    font-size: 9px;
 
-    font-size:45px;
-
-    color:var(--accent);
-
-    margin-bottom:10px;
-
+    color: var(--muted);
 }
-
 
 
-.box p{
+.emergency-card {
 
-    font-size:17px;
+    background: #fff7ed;
 
+    border-color: #fed7aa;
 }
-
-
-
-/* ===============================
-   EMERGENCY STATUS PANEL
-================================ */
-
 
-.status-panel{
 
-    margin-top:50px;
+.emergency-card h3 {
 
-    background:#f5f7fa;
-
-    padding:30px;
-
-    border-radius:15px;
-
+    color: #c2410c;
 }
-
 
 
-.status-panel h3{
+.emergency-card p {
 
-    color:var(--secondary);
+    font-size: 11px;
 
-    margin-bottom:20px;
+    line-height: 1.6;
 
+    color: #7c2d12;
 }
 
 
+/* ==========================================
+   PAGE CARDS
+========================================== */
 
-.status-item{
+.page-card {
 
-    display:flex;
+    background: white;
 
-    justify-content:space-between;
+    border: 1px solid var(--border);
 
-    align-items:center;
+    border-radius: var(--radius);
 
-    padding:15px;
+    padding: 30px;
 
-    background:white;
-
-    margin-bottom:15px;
-
-    border-radius:10px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-
+    box-shadow: var(--shadow);
 }
 
 
+.section-label {
 
-.status-active{
+    font-size: 10px;
 
-    color:green;
+    font-weight: 700;
 
-    font-weight:bold;
+    color: var(--primary);
 
+    letter-spacing: 1px;
 }
-
 
 
-.status-warning{
+.page-card h2 {
 
-    color:#d97706;
+    font-size: 24px;
 
-    font-weight:bold;
-
+    margin: 8px 0;
 }
-
 
 
-.status-danger{
+.page-card > p {
 
-    color:red;
+    color: var(--muted);
 
-    font-weight:bold;
+    font-size: 13px;
 
+    margin-bottom: 25px;
 }
 
 
+/* ==========================================
+   FORMS
+========================================== */
 
-/* ===============================
-   CONTACT SECTION
-================================ */
+.form-grid {
 
+    display: grid;
 
-#contact{
+    grid-template-columns: 1fr 1fr;
 
-    background:#eef4f8;
+    gap: 18px;
 
+    margin-bottom: 18px;
 }
 
 
+.form-group {
 
-#contact form{
-
-    max-width:700px;
+    margin-bottom: 18px;
+}
 
-    margin:auto;
 
-    background:white;
+.form-group label {
 
-    padding:40px;
+    display: block;
 
-    border-radius:20px;
+    font-size: 12px;
 
-    box-shadow:var(--shadow);
+    font-weight: 600;
 
+    margin-bottom: 7px;
 }
-
-
-
-#contact input,
-
-#contact textarea{
 
-    width:100%;
 
-    padding:15px;
+.form-group input,
+.form-group select,
+.form-group textarea {
 
-    margin-bottom:20px;
+    width: 100%;
 
-    border:1px solid #ddd;
+    border: 1px solid var(--border);
 
-    border-radius:10px;
+    border-radius: 8px;
 
-    outline:none;
+    padding: 11px;
 
-    font-size:15px;
+    font-family: inherit;
 
-    font-family:inherit;
+    font-size: 12px;
 
+    outline: none;
 }
 
 
+.form-group textarea {
 
-#contact textarea{
-
-    height:150px;
-
-    resize:none;
-
+    resize: vertical;
 }
-
 
 
-#contact input:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
 
-#contact textarea:focus{
-
-    border-color:var(--primary);
-
+    border-color: var(--primary);
 }
-
-
-
-/* ===============================
-   FORM BUTTON
-================================ */
 
 
-#contact button{
+.form-actions {
 
-    width:100%;
+    display: flex;
 
-    padding:15px;
-
-    border:none;
+    gap: 10px;
+}
 
-    border-radius:10px;
 
-    background:var(--primary);
+.primary-btn,
+.secondary-btn {
 
-    color:white;
+    border: none;
 
-    font-size:17px;
+    padding: 10px 15px;
 
-    font-weight:600;
+    border-radius: 8px;
 
-    cursor:pointer;
+    font-family: inherit;
 
-    transition:.3s;
+    font-size: 11px;
 
+    cursor: pointer;
 }
 
 
+.primary-btn {
 
-#contact button:hover{
+    background: var(--primary);
 
-    background:#a4161a;
-
+    color: white;
 }
-
-
-
-/* ===============================
-   MAP PLACEHOLDER
-================================ */
-
-
-.map-container{
 
-    width:100%;
 
-    height:400px;
+.secondary-btn {
 
-    background:
+    background: #f1f5f9;
 
-    linear-gradient(
-
-    45deg,
-
-    #d9e8f5,
+    color: var(--text);
+}
 
-    #ffffff
 
-    );
+.primary-btn:hover {
 
-    border-radius:20px;
+    background: var(--primary-dark);
+}
 
-    display:flex;
 
-    align-items:center;
+/* ==========================================
+   REPORT OUTPUT
+========================================== */
 
-    justify-content:center;
+.report-output {
 
-    font-size:25px;
+    margin-top: 30px;
 
-    color:var(--secondary);
+    background: #111827;
 
-    margin-top:40px;
+    color: #e5e7eb;
 
-    box-shadow:var(--shadow);
+    border-radius: 10px;
 
+    overflow: hidden;
 }
-
-
-
-/* ===============================
-   ALERT BOXES
-================================ */
-
-
-.alert{
 
-    padding:20px;
 
-    border-radius:12px;
+.report-header {
 
-    margin-bottom:20px;
+    padding: 13px 15px;
 
-    display:flex;
+    border-bottom: 1px solid #374151;
 
-    align-items:center;
+    display: flex;
 
-    gap:15px;
+    justify-content: space-between;
 
+    align-items: center;
 }
 
 
+.report-header h3 {
 
-.alert-danger{
-
-    background:#fee2e2;
-
-    color:#991b1b;
-
-    border-left:5px solid red;
-
+    font-size: 13px;
 }
 
 
+.report-output pre {
 
-.alert-warning{
+    padding: 20px;
 
-    background:#fef3c7;
+    white-space: pre-wrap;
 
-    color:#92400e;
+    font-family: monospace;
 
-    border-left:5px solid orange;
+    font-size: 11px;
 
+    line-height: 1.7;
 }
 
 
+/* ==========================================
+   PREPAREDNESS
+========================================== */
 
-.alert-success{
+.preparedness-grid {
 
-    background:#dcfce7;
+    display: grid;
 
-    color:#166534;
+    grid-template-columns: repeat(2, 1fr);
 
-    border-left:5px solid green;
-
+    gap: 16px;
 }
-
 
 
-/* ===============================
-   TABLE DESIGN
-================================ */
+.prep-card {
 
+    border: 1px solid var(--border);
 
-.emergency-table{
+    padding: 20px;
 
-    width:100%;
+    border-radius: 10px;
 
-    border-collapse:collapse;
-
-    margin-top:30px;
+    transition: .2s;
+}
 
-    background:white;
 
-    border-radius:15px;
+.prep-card:hover {
 
-    overflow:hidden;
+    border-color: var(--primary);
 
+    transform: translateY(-2px);
 }
 
 
+.prep-card span {
 
-.emergency-table th{
+    font-size: 25px;
+}
 
-    background:var(--secondary);
 
-    color:white;
+.prep-card h3 {
 
-    padding:15px;
+    font-size: 14px;
 
+    margin: 10px 0;
 }
-
 
 
-.emergency-table td{
+.prep-card p {
 
-    padding:15px;
+    font-size: 11px;
 
-    border-bottom:1px solid #ddd;
+    color: var(--muted);
 
+    line-height: 1.6;
 }
 
 
+/* ==========================================
+   RESOURCES
+========================================== */
 
-.emergency-table tr:hover{
+.resources-list {
 
-    background:#f5f7fa;
-
-}
+    display: flex;
 
+    flex-direction: column;
 
+    gap: 12px;
+}
 
-/* ===============================
-   MOBILE RESPONSIVE
-================================ */
 
+.resource-item {
 
-@media(max-width:768px){
+    display: flex;
 
+    gap: 15px;
 
-.workflow{
+    padding: 18px;
 
-grid-template-columns:1fr;
+    border: 1px solid var(--border);
 
+    border-radius: 10px;
 }
-
 
-.dashboard{
 
-grid-template-columns:1fr;
+.resource-item > span {
 
+    font-size: 25px;
 }
 
 
-#contact form{
+.resource-item h3 {
 
-padding:25px;
+    font-size: 13px;
 
+    margin-bottom: 5px;
 }
 
 
-.box h3{
+.resource-item p {
 
-font-size:35px;
+    font-size: 11px;
 
-}
+    color: var(--muted);
 
-
+    line-height: 1.5;
 }
-/* =====================================================
-   AI DISASTER RESPONSE ASSISTANT
-   STYLE.CSS
-   PART 4 (FINAL)
-
-   FOOTER + ANIMATIONS + FINAL POLISH
-===================================================== */
 
 
-/* ===============================
+/* ==========================================
    FOOTER
-================================ */
+========================================== */
 
-footer{
+footer {
 
-    background:var(--secondary);
+    padding: 20px 30px;
 
-    color:white;
+    display: flex;
 
-    padding:60px 8%;
+    justify-content: space-between;
 
-    text-align:center;
+    color: #9ca3af;
 
+    font-size: 9px;
 }
 
 
-footer h3{
+/* ==========================================
+   RESPONSIVE
+========================================== */
 
-    font-size:30px;
+@media (max-width: 1000px) {
 
-    margin-bottom:15px;
+    .dashboard-grid {
 
-    color:var(--accent);
+        grid-template-columns: 1fr;
+    }
 
+    .information-panel {
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 
-footer p{
+@media (max-width: 800px) {
 
-    max-width:700px;
+    .sidebar {
 
-    margin:10px auto;
+        transform: translateX(-100%);
 
-    color:#ddd;
+        transition: .3s;
+    }
 
+    .sidebar.open {
+
+        transform: translateX(0);
+    }
+
+    .main {
+
+        margin-left: 0;
+    }
+
+    .menu-btn {
+
+        display: block;
+    }
+
+    .topbar {
+
+        padding: 0 15px;
+
+        gap: 12px;
+    }
+
+    .topbar > div:nth-child(2) {
+
+        flex: 1;
+    }
+
+    .topbar h1 {
+
+        font-size: 14px;
+    }
+
+    .topbar p {
+
+        display: none;
+    }
+
+    .content {
+
+        padding: 15px;
+    }
+
+    .information-panel {
+
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .preparedness-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
 }
 
 
-.footer-icons{
+@media (max-width: 500px) {
 
-    margin-top:25px;
+    .chat-header {
 
-}
+        align-items: flex-start;
 
+        gap: 10px;
+    }
 
-.footer-icons a{
+    .quick-actions {
 
-    display:inline-flex;
+        overflow-x: auto;
 
-    justify-content:center;
+        flex-wrap: nowrap;
+    }
 
-    align-items:center;
+    .quick-actions button {
 
-    width:45px;
+        white-space: nowrap;
+    }
 
-    height:45px;
+    #languageSelector {
 
-    margin:8px;
+        width: 90px;
 
-    border-radius:50%;
-
-    background:white;
-
-    color:var(--secondary);
-
-    transition:.3s;
-
-}
-
-
-.footer-icons a:hover{
-
-    background:var(--accent);
-
-    transform:translateY(-5px);
-
-}
-
-
-
-/* ===============================
-   SCROLL TO TOP BUTTON
-================================ */
-
-.scroll-top{
-
-    position:fixed;
-
-    bottom:30px;
-
-    right:30px;
-
-    width:50px;
-
-    height:50px;
-
-    border-radius:50%;
-
-    background:var(--primary);
-
-    color:white;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s;
-
-    z-index:999;
-
-}
-
-
-.scroll-top.active{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-
-
-/* ===============================
-   LOADING ANIMATION
-================================ */
-
-
-.loader{
-
-    width:45px;
-
-    height:45px;
-
-    border-radius:50%;
-
-    border:5px solid #ddd;
-
-    border-top-color:var(--primary);
-
-    animation:rotate 1s linear infinite;
-
-}
-
-
-
-@keyframes rotate{
-
-from{
-
-transform:rotate(0deg);
-
-}
-
-to{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-
-
-/* ===============================
-   AI STATUS INDICATOR
-================================ */
-
-
-.ai-status{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    font-size:14px;
-
-    color:#666;
-
-}
-
-
-
-.ai-status span{
-
-    width:12px;
-
-    height:12px;
-
-    background:#22c55e;
-
-    border-radius:50%;
-
-    animation:pulse 1.5s infinite;
-
-}
-
-
-
-@keyframes pulse{
-
-
-0%{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-
-50%{
-
-transform:scale(1.5);
-
-opacity:.5;
-
-}
-
-
-100%{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-
-}
-
-
-
-/* ===============================
-   AI RESPONSE CARD
-================================ */
-
-
-.ai-response-card{
-
-    background:white;
-
-    border-radius:18px;
-
-    padding:25px;
-
-    margin-top:25px;
-
-    box-shadow:var(--shadow);
-
-    border-left:5px solid var(--primary);
-
-    animation:slideUp .5s ease;
-
-}
-
-
-
-.ai-response-card h3{
-
-    color:var(--secondary);
-
-    margin-bottom:15px;
-
-}
-
-
-
-.ai-response-card ul{
-
-    list-style:disc;
-
-    padding-left:20px;
-
-}
-
-
-
-/* ===============================
-   ANIMATIONS
-================================ */
-
-
-@keyframes slideUp{
-
-
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-
-}
-
-
-
-.fade-in{
-
-    animation:fadeIn 1s ease;
-
-}
-
-
-
-@keyframes fadeIn{
-
-
-from{
-
-opacity:0;
-
-}
-
-
-to{
-
-opacity:1;
-
-}
-
-
-}
-
-
-
-/* ===============================
-   DARK MODE
-================================ */
-
-
-.dark-mode{
-
-    background:#101820;
-
-    color:white;
-
-}
-
-
-
-.dark-mode header{
-
-    background:#000;
-
-}
-
-
-
-.dark-mode .card,
-
-.dark-mode .chat-container,
-
-.dark-mode #contact form,
-
-.dark-mode .box,
-
-.dark-mode .step{
-
-    background:#1f2937;
-
-    color:white;
-
-}
-
-
-
-.dark-mode .chat-box{
-
-    background:#111827;
-
-}
-
-
-
-.dark-mode .ai .bubble{
-
-    background:#374151;
-
-    color:white;
-
-}
-
-
-
-.dark-mode input,
-
-.dark-mode textarea{
-
-    background:#111827;
-
-    color:white;
-
-    border-color:#444;
-
-}
-
-
-
-/* ===============================
-   MOBILE NAVIGATION
-================================ */
-
-
-.menu-toggle{
-
-    display:none;
-
-    font-size:30px;
-
-    cursor:pointer;
-
-}
-
-
-
-@media(max-width:768px){
-
-
-.menu-toggle{
-
-display:block;
-
-}
-
-
-nav{
-
-display:none;
-
-}
-
-
-nav.active{
-
-display:block;
-
-}
-
-
-nav ul{
-
-flex-direction:column;
-
-background:var(--secondary);
-
-padding:20px;
-
-border-radius:10px;
-
-}
-
-
-.hero{
-
-padding-left:5%;
-
-padding-right:5%;
-
-}
-
-
-section{
-
-padding:70px 5%;
-
-}
-
-
-footer{
-
-padding:50px 5%;
-
-}
-
-
-}
-
-
-
-/* ===============================
-   EXTRA BUTTON EFFECTS
-================================ */
-
-
-button{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-
-
-button::after{
-
-content:"";
-
-position:absolute;
-
-width:0;
-
-height:0;
-
-background:rgba(255,255,255,.3);
-
-border-radius:50%;
-
-transform:translate(-50%,-50%);
-
-transition:.5s;
-
-}
-
-
-
-button:active::after{
-
-width:300px;
-
-height:300px;
-
-}
-
-
-
-/* ===============================
-   SECURITY BADGE
-================================ */
-
-
-.security-badge{
-
-display:inline-flex;
-
-align-items:center;
-
-gap:10px;
-
-padding:10px 20px;
-
-background:#dcfce7;
-
-color:#166534;
-
-border-radius:20px;
-
-font-weight:600;
-
-}
-
-
-
-/* ===============================
-   PRINT REPORT STYLE
-================================ */
-
-
-.report{
-
-background:white;
-
-padding:40px;
-
-border-radius:15px;
-
-box-shadow:var(--shadow);
-
-}
-
-
-
-.report h2{
-
-text-align:left;
-
-margin-bottom:20px;
-
-}
-
-
-
-.report-section{
-
-margin-bottom:25px;
-
-}
-
-
-
-/* ===============================
-   FINAL RESPONSIVE FIXES
-================================ */
-
-
-@media(max-width:500px){
-
-
-.logo span{
-
-font-size:16px;
-
-}
-
-
-.hero-left h1{
-
-font-size:30px;
-
-}
-
-
-section h2{
-
-font-size:30px;
-
-}
-
-
-.chat-header{
-
-font-size:18px;
-
-}
-
-
+        padding: 8px 4px;
+    }
 }
