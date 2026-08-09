@@ -1,761 +1,636 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description"
+        content="AI Disaster Response Assistant - Emergency information, translation, reporting and preparedness support.">
+
     <title>AI Disaster Response Assistant</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ===================== NAVIGATION ===================== -->
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
 
-    <header>
+    <aside class="sidebar" id="sidebar">
 
-        <div class="logo">
-            <i class="fa-solid fa-shield-heart"></i>
-            <span>AI Disaster Response Assistant</span>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#workflow">Workflow</a></li>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-
-    </header>
-
-
-    <!-- ===================== HERO ===================== -->
-
-    <section class="hero" id="home">
-
-        <div class="hero-left">
-
-            <span class="hero-tag">
-                <i class="fa-solid fa-bolt"></i>
-                AI-Powered Emergency Technology
-            </span>
-
-            <h1>
-                Intelligent Disaster
-                <span>Response Assistant</span>
-            </h1>
-
-            <p>
-                An intelligent disaster management platform designed to
-                help emergency responders analyze information, coordinate
-                response activities, communicate with affected communities,
-                and make faster, informed decisions.
-            </p>
-
-            <div class="hero-buttons">
-
-                <button onclick="scrollToChat()">
-                    <i class="fa-solid fa-robot"></i>
-                    Launch Assistant
-                </button>
-
-                <button class="outline" onclick="scrollToFeatures()">
-                    Learn More
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-
+        <div class="brand">
+            <div class="brand-icon">
+                <span>+</span>
             </div>
-
-            <div class="hero-stats">
-
-                <div>
-                    <strong>24/7</strong>
-                    <small>Response Support</small>
-                </div>
-
-                <div>
-                    <strong>6+</strong>
-                    <small>AI Capabilities</small>
-                </div>
-
-                <div>
-                    <strong>3</strong>
-                    <small>Disaster Scenarios</small>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ===================== IMAGE SLIDESHOW ===================== -->
-
-        <div class="hero-right">
-
-            <div class="slideshow">
-
-                <!-- Slide 1 -->
-                <div class="slide active">
-
-                    <img src="images/disaster.png"
-                        alt="AI Disaster Response">
-
-                    <div class="slide-caption">
-
-                        <i class="fa-solid fa-shield-heart"></i>
-
-                        <div>
-                            <h3>AI Disaster Response</h3>
-                            <p>Smart technology for emergency management</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Slide 2 -->
-                <div class="slide">
-
-                    <img src="images/flood.png"
-                        alt="Flood Emergency">
-
-                    <div class="slide-caption">
-
-                        <i class="fa-solid fa-water"></i>
-
-                        <div>
-                            <h3>Flood Response</h3>
-                            <p>Monitor affected areas and coordinate evacuation</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Slide 3 -->
-                <div class="slide">
-
-                    <img src="images/rescue.png"
-                        alt="Emergency Rescue">
-
-                    <div class="slide-caption">
-
-                        <i class="fa-solid fa-person-circle-exclamation"></i>
-
-                        <div>
-                            <h3>Emergency Rescue</h3>
-                            <p>Support rescue teams with real-time information</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Previous Button -->
-                <button class="slide-btn prev"
-                    onclick="changeSlide(-1)">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-
-
-                <!-- Next Button -->
-                <button class="slide-btn next"
-                    onclick="changeSlide(1)">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-
-                <!-- Dots -->
-                <div class="slide-dots">
-
-                    <span class="dot active"
-                        onclick="currentSlide(1)"></span>
-
-                    <span class="dot"
-                        onclick="currentSlide(2)"></span>
-
-                    <span class="dot"
-                        onclick="currentSlide(3)"></span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================== FEATURES ===================== -->
-
-    <section class="features" id="features">
-
-        <div class="section-heading">
-
-            <span>OUR CAPABILITIES</span>
-
-            <h2>Key Features</h2>
-
-            <p>
-                Powerful AI tools designed to support emergency responders
-                before, during, and after disasters.
-            </p>
-
-        </div>
-
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="card-icon">
-                    <i class="fa-solid fa-file-lines"></i>
-                </div>
-
-                <h3>Report Summarization</h3>
-
-                <p>
-                    Upload lengthy emergency reports and receive concise,
-                    AI-generated summaries with recommended actions.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                </div>
-
-                <h3>Evacuation Notices</h3>
-
-                <p>
-                    Automatically generate clear evacuation instructions
-                    for affected communities.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    <i class="fa-solid fa-language"></i>
-                </div>
-
-                <h3>AI Translation</h3>
-
-                <p>
-                    Translate emergency communications into English,
-                    Hausa, Igbo, Yoruba, French and more.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                </div>
-
-                <h3>Situation Maps</h3>
-
-                <p>
-                    Display disaster locations, shelters, hospitals,
-                    evacuation routes and affected communities.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
-
-                <h3>Visual Briefings</h3>
-
-                <p>
-                    Create dashboards, statistics, charts and presentation
-                    slides for emergency command centres.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    <i class="fa-solid fa-bullhorn"></i>
-                </div>
-
-                <h3>Public Awareness</h3>
-
-                <p>
-                    Generate SMS, posters, flyers, radio announcements
-                    and social media campaigns.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================== CHATBOT ===================== -->
-
-    <section class="chat-section" id="assistant">
-
-        <div class="section-heading">
-
-            <span>AI ASSISTANT</span>
-
-            <h2>Emergency Response Assistant</h2>
-
-            <p>
-                Ask questions and receive AI-powered disaster response
-                guidance.
-            </p>
-
-        </div>
-
-
-        <div class="chat-container">
-
-            <div class="chat-header">
-
-                <div class="chat-title">
-
-                    <div class="bot-icon">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-
-                    <div>
-                        <strong>AI Disaster Assistant</strong>
-                        <small>
-                            <span class="online"></span>
-                            Online
-                        </small>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div id="chatBox" class="chat-box">
-
-                <div class="message ai">
-
-                    <div class="bubble">
-
-                        <strong>Hello! 👋</strong>
-
-                        <br><br>
-
-                        I am your AI Disaster Response Assistant.
-
-                        <br><br>
-
-                        You can ask me about:
-
-                        <br><br>
-
-                        ✔ Flood response
-
-                        <br>
-
-                        ✔ Fire outbreaks
-
-                        <br>
-
-                        ✔ Earthquakes
-
-                        <br>
-
-                        ✔ Evacuation notices
-
-                        <br>
-
-                        ✔ Emergency translation
-
-                        <br>
-
-                        ✔ Disaster reports
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="chat-input">
-
-                <textarea
-                    id="message"
-                    placeholder="Ask anything about disaster response..."></textarea>
-
-                <button onclick="sendMessage()">
-
-                    <i class="fa-solid fa-paper-plane"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================== WORKFLOW ===================== -->
-
-    <section id="workflow">
-
-        <div class="section-heading">
-
-            <span>HOW IT WORKS</span>
-
-            <h2>System Workflow</h2>
-
-            <p>
-                From emergency alerts to response documentation,
-                our workflow supports the complete disaster management cycle.
-            </p>
-
-        </div>
-
-
-        <div class="workflow">
-
-            <div class="step">
-                <div class="step-number">01</div>
-                <i class="fa-solid fa-bell"></i>
-                <h3>Emergency Alert</h3>
-                <p>Receive information about an emerging disaster.</p>
-            </div>
-
-
-            <div class="step">
-                <div class="step-number">02</div>
-                <i class="fa-solid fa-file-import"></i>
-                <h3>Collect Reports</h3>
-                <p>Gather reports from responders and communities.</p>
-            </div>
-
-
-            <div class="step">
-                <div class="step-number">03</div>
-                <i class="fa-solid fa-brain"></i>
-                <h3>AI Analysis</h3>
-                <p>Analyze information and identify response priorities.</p>
-            </div>
-
-
-            <div class="step">
-                <div class="step-number">04</div>
-                <i class="fa-solid fa-map"></i>
-                <h3>Generate Maps</h3>
-                <p>Create useful situation and evacuation maps.</p>
-            </div>
-
-
-            <div class="step">
-                <div class="step-number">05</div>
-                <i class="fa-solid fa-bullhorn"></i>
-                <h3>Public Alerts</h3>
-                <p>Generate clear messages for affected communities.</p>
-            </div>
-
-
-            <div class="step">
-                <div class="step-number">06</div>
-                <i class="fa-solid fa-folder-open"></i>
-                <h3>Documentation</h3>
-                <p>Generate reports for response and recovery.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================== DASHBOARD ===================== -->
-
-    <section id="dashboard">
-
-        <div class="section-heading">
-
-            <span>COMMAND CENTRE</span>
-
-            <h2>Emergency Dashboard</h2>
-
-            <p>
-                A quick overview of important disaster response indicators.
-            </p>
-
-        </div>
-
-
-        <div class="dashboard">
-
-            <div class="box">
-
-                <i class="fa-solid fa-triangle-exclamation"></i>
-
-                <h3>32</h3>
-
-                <p>Active Incidents</p>
-
-            </div>
-
-
-            <div class="box">
-
-                <i class="fa-solid fa-users"></i>
-
-                <h3>18</h3>
-
-                <p>Rescue Teams</p>
-
-            </div>
-
-
-            <div class="box">
-
-                <i class="fa-solid fa-house-medical"></i>
-
-                <h3>12</h3>
-
-                <p>Emergency Shelters</p>
-
-            </div>
-
-
-            <div class="box">
-
-                <i class="fa-solid fa-chart-simple"></i>
-
-                <h3>95%</h3>
-
-                <p>AI Accuracy</p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================== CONTACT ===================== -->
-
-    <section id="contact">
-
-        <div class="section-heading">
-
-            <span>GET IN TOUCH</span>
-
-            <h2>Contact Us</h2>
-
-            <p>
-                Have questions about the AI Disaster Response Assistant?
-                Send us a message.
-            </p>
-
-        </div>
-
-
-        <form>
-
-            <input
-                type="text"
-                placeholder="Full Name"
-                required>
-
-            <input
-                type="email"
-                placeholder="Email Address"
-                required>
-
-            <textarea
-                placeholder="Your Message"
-                required></textarea>
-
-            <button type="submit">
-                <i class="fa-solid fa-paper-plane"></i>
-                Send Message
-            </button>
-
-        </form>
-
-    </section>
-
-
-    <!-- ===================== FOOTER ===================== -->
-
-    <footer>
-
-        <div class="footer-content">
 
             <div>
+                <h2>DisasterAI</h2>
+                <small>Response Assistant</small>
+            </div>
+        </div>
 
-                <h3>
-                    <i class="fa-solid fa-shield-heart"></i>
-                    AI Disaster Response Assistant
-                </h3>
+        <nav class="navigation">
 
-                <p>
-                    AI-powered disaster management technology supporting
-                    emergency preparedness, response and recovery.
-                </p>
+            <button class="nav-item active" data-section="chat">
+                <span>💬</span>
+                <span>AI Assistant</span>
+            </button>
 
+            <button class="nav-item" data-section="report">
+                <span>📋</span>
+                <span>Incident Report</span>
+            </button>
+
+            <button class="nav-item" data-section="preparedness">
+                <span>🛡️</span>
+                <span>Preparedness</span>
+            </button>
+
+            <button class="nav-item" data-section="resources">
+                <span>📚</span>
+                <span>Resources</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="status">
+                <span class="status-dot"></span>
+                System Online
             </div>
 
-            <div class="footer-links">
-
-                <a href="#home">Home</a>
-                <a href="#features">Features</a>
-                <a href="#workflow">Workflow</a>
-                <a href="#dashboard">Dashboard</a>
-
-            </div>
+            <p>AI Disaster Response Assistant</p>
 
         </div>
 
+    </aside>
 
-        <div class="footer-bottom">
+
+    <!-- =========================
+         MAIN APPLICATION
+    ========================== -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <div>
+                <h1>AI Disaster Response Assistant</h1>
+                <p>Emergency intelligence, communication and response support</p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <select id="languageSelector" aria-label="Language">
+
+                    <option value="en">English</option>
+                    <option value="ig">Igbo</option>
+                    <option value="ha">Hausa</option>
+                    <option value="yo">Yoruba</option>
+                    <option value="fr">French</option>
+
+                </select>
+
+                <button class="notification-btn">
+                    🔔
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             CONTENT
+        ========================== -->
+
+        <section class="content">
+
+
+            <!-- =========================
+                 CHAT SECTION
+            ========================== -->
+
+            <section id="chatSection" class="section active">
+
+                <div class="dashboard-grid">
+
+                    <div class="chat-container">
+
+                        <div class="chat-header">
+
+                            <div class="assistant-profile">
+
+                                <div class="assistant-avatar">
+                                    🤖
+                                </div>
+
+                                <div>
+                                    <h3>DisasterAI Assistant</h3>
+
+                                    <span>
+                                        <i class="online-dot"></i>
+                                        Ready to assist
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <button id="clearChat" class="secondary-btn">
+                                Clear Chat
+                            </button>
+
+                        </div>
+
+
+                        <!-- CHAT MESSAGES -->
+
+                        <div id="chatMessages" class="chat-messages">
+
+                            <div class="message assistant">
+
+                                <div class="message-avatar">
+                                    🤖
+                                </div>
+
+                                <div class="message-content">
+
+                                    <div class="message-name">
+                                        DisasterAI
+                                    </div>
+
+                                    <div class="message-bubble">
+
+                                        Hello! I am your AI Disaster Response Assistant.
+
+                                        <br><br>
+
+                                        I can help you with:
+
+                                        <ul>
+                                            <li>Emergency preparedness</li>
+                                            <li>Flood, fire and earthquake information</li>
+                                            <li>Incident reporting</li>
+                                            <li>Evacuation communication</li>
+                                            <li>Emergency awareness messages</li>
+                                            <li>Translation into Igbo, Hausa, Yoruba and French</li>
+                                        </ul>
+
+                                        What would you like assistance with?
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TYPING INDICATOR -->
+
+                        <div id="typingIndicator" class="typing hidden">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                            DisasterAI is thinking...
+
+                        </div>
+
+
+                        <!-- QUICK ACTIONS -->
+
+                        <div class="quick-actions">
+
+                            <button data-prompt="What should I do during a flood?">
+                                🌊 Flood Safety
+                            </button>
+
+                            <button data-prompt="What should I do during a fire emergency?">
+                                🔥 Fire Safety
+                            </button>
+
+                            <button data-prompt="Help me prepare an evacuation message.">
+                                🚨 Evacuation
+                            </button>
+
+                            <button data-prompt="Help me create an emergency incident report.">
+                                📋 Incident Report
+                            </button>
+
+                        </div>
+
+
+                        <!-- CHAT INPUT -->
+
+                        <div class="chat-input-area">
+
+                            <textarea
+                                id="userInput"
+                                placeholder="Describe an emergency or ask a question..."
+                                rows="1"></textarea>
+
+                            <button id="sendButton" class="send-btn">
+                                <span>➤</span>
+                            </button>
+
+                        </div>
+
+                        <div class="input-help">
+                            Press Enter to send • Shift + Enter for a new line
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         RIGHT PANEL
+                    ========================== -->
+
+                    <aside class="information-panel">
+
+                        <div class="panel-card">
+
+                            <div class="panel-title">
+                                <h3>Emergency Status</h3>
+                                <span class="live-badge">LIVE</span>
+                            </div>
+
+                            <div class="emergency-status">
+
+                                <div class="status-circle">
+                                    ✓
+                                </div>
+
+                                <div>
+                                    <strong>No Active Alert</strong>
+                                    <p>Monitor official emergency channels.</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="panel-card">
+
+                            <h3>Response Tools</h3>
+
+                            <button class="tool-btn" data-tool="evacuation">
+                                <span>🚨</span>
+                                <div>
+                                    <strong>Evacuation Message</strong>
+                                    <small>Create a public alert</small>
+                                </div>
+                            </button>
+
+                            <button class="tool-btn" data-tool="report">
+                                <span>📋</span>
+                                <div>
+                                    <strong>Incident Report</strong>
+                                    <small>Document an incident</small>
+                                </div>
+                            </button>
+
+                            <button class="tool-btn" data-tool="awareness">
+                                <span>📢</span>
+                                <div>
+                                    <strong>Awareness Message</strong>
+                                    <small>Create public information</small>
+                                </div>
+                            </button>
+
+                        </div>
+
+
+                        <div class="panel-card emergency-card">
+
+                            <h3>Emergency Reminder</h3>
+
+                            <p>
+                                During a life-threatening emergency,
+                                contact your local emergency services
+                                and follow instructions from authorized
+                                emergency responders.
+                            </p>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 REPORT SECTION
+            ========================== -->
+
+            <section id="reportSection" class="section">
+
+                <div class="page-card">
+
+                    <div class="page-heading">
+
+                        <div>
+                            <span class="section-label">DOCUMENTATION</span>
+
+                            <h2>Incident Report</h2>
+
+                            <p>
+                                Record important information about an
+                                emergency or disaster incident.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <form id="incidentForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>Incident Type</label>
+
+                                <select id="incidentType">
+
+                                    <option value="">Select incident</option>
+                                    <option>Flood</option>
+                                    <option>Fire</option>
+                                    <option>Road Accident</option>
+                                    <option>Building Collapse</option>
+                                    <option>Storm</option>
+                                    <option>Earthquake</option>
+                                    <option>Security Emergency</option>
+                                    <option>Other</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Location</label>
+
+                                <input
+                                    id="incidentLocation"
+                                    type="text"
+                                    placeholder="Enter incident location">
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Date & Time</label>
+
+                                <input
+                                    id="incidentDate"
+                                    type="datetime-local">
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>Severity</label>
+
+                                <select id="incidentSeverity">
+
+                                    <option>Low</option>
+                                    <option>Moderate</option>
+                                    <option>High</option>
+                                    <option>Critical</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Incident Description</label>
+
+                            <textarea
+                                id="incidentDescription"
+                                rows="6"
+                                placeholder="Describe what happened..."></textarea>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button type="button" id="generateReport" class="primary-btn">
+                                Generate Report
+                            </button>
+
+                            <button type="reset" class="secondary-btn">
+                                Reset
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <div id="reportOutput" class="report-output hidden">
+
+                        <div class="report-header">
+
+                            <h3>Generated Incident Report</h3>
+
+                            <button id="copyReport" class="secondary-btn">
+                                Copy
+                            </button>
+
+                        </div>
+
+                        <pre id="reportText"></pre>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PREPAREDNESS
+            ========================== -->
+
+            <section id="preparednessSection" class="section">
+
+                <div class="page-card">
+
+                    <span class="section-label">
+                        DISASTER PREPAREDNESS
+                    </span>
+
+                    <h2>Prepare Before Disaster Strikes</h2>
+
+                    <p>
+                        Good preparation can reduce risks and improve
+                        emergency response.
+                    </p>
+
+
+                    <div class="preparedness-grid">
+
+                        <div class="prep-card">
+                            <span>🎒</span>
+                            <h3>Emergency Kit</h3>
+                            <p>
+                                Keep water, food, a flashlight,
+                                first-aid supplies and important
+                                documents accessible.
+                            </p>
+                        </div>
+
+
+                        <div class="prep-card">
+                            <span>📞</span>
+                            <h3>Communication</h3>
+                            <p>
+                                Keep important emergency contacts
+                                available and establish a family
+                                communication plan.
+                            </p>
+                        </div>
+
+
+                        <div class="prep-card">
+                            <span>🏠</span>
+                            <h3>Safe Location</h3>
+                            <p>
+                                Identify safe areas and evacuation
+                                routes before an emergency occurs.
+                            </p>
+                        </div>
+
+
+                        <div class="prep-card">
+                            <span>📢</span>
+                            <h3>Stay Informed</h3>
+                            <p>
+                                Follow verified information from
+                                authorized emergency management
+                                organizations.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 RESOURCES
+            ========================== -->
+
+            <section id="resourcesSection" class="section">
+
+                <div class="page-card">
+
+                    <span class="section-label">
+                        RESOURCES
+                    </span>
+
+                    <h2>Emergency Resources</h2>
+
+                    <div class="resources-list">
+
+                        <div class="resource-item">
+                            <span>🚨</span>
+                            <div>
+                                <h3>Emergency Services</h3>
+                                <p>
+                                    Contact the appropriate local
+                                    emergency authority during a
+                                    life-threatening emergency.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="resource-item">
+                            <span>🌊</span>
+                            <div>
+                                <h3>Flood Preparedness</h3>
+                                <p>
+                                    Avoid floodwater and move to
+                                    safer elevated locations when
+                                    instructed.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="resource-item">
+                            <span>🔥</span>
+                            <div>
+                                <h3>Fire Safety</h3>
+                                <p>
+                                    Leave dangerous areas and follow
+                                    instructions from firefighters
+                                    and emergency authorities.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
 
             <p>
-                © 2026 AI Disaster Response Assistant.
-                All Rights Reserved.
+                © 2026 DisasterAI Response Assistant
             </p>
 
-        </div>
+            <p>
+                Designed for emergency preparedness and response support.
+            </p>
 
-    </footer>
+        </footer>
 
-
-    <!-- ===================== JAVASCRIPT ===================== -->
-
-    <script>
-
-        /* =====================
-           SLIDESHOW
-        ===================== */
-
-        let slideIndex = 1;
-
-        showSlides(slideIndex);
-
-        function changeSlide(n) {
-
-            showSlides(slideIndex += n);
-
-        }
-
-        function currentSlide(n) {
-
-            showSlides(slideIndex = n);
-
-        }
-
-        function showSlides(n) {
-
-            let slides =
-                document.getElementsByClassName("slide");
-
-            let dots =
-                document.getElementsByClassName("dot");
-
-            if (n > slides.length) {
-
-                slideIndex = 1;
-
-            }
-
-            if (n < 1) {
-
-                slideIndex = slides.length;
-
-            }
-
-            for (let i = 0; i < slides.length; i++) {
-
-                slides[i].classList.remove("active");
-
-            }
-
-            for (let i = 0; i < dots.length; i++) {
-
-                dots[i].classList.remove("active");
-
-            }
-
-            slides[slideIndex - 1].classList.add("active");
-
-            dots[slideIndex - 1].classList.add("active");
-
-        }
+    </main>
 
 
-        /* Automatic slideshow */
-
-        setInterval(function () {
-
-            changeSlide(1);
-
-        }, 5000);
-
-
-        /* =====================
-           SCROLL BUTTONS
-        ===================== */
-
-        function scrollToChat() {
-
-            document.getElementById("assistant")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        }
-
-
-        function scrollToFeatures() {
-
-            document.getElementById("features")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        }
-
-    </script>
-
-</body>
-
-</html>
-```
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
